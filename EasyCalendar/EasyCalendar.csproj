@@ -80,7 +80,7 @@
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
     <Compile Include="Calendar\CalendarControlItem.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Calendar\CalendarControlItem.Designer.cs">
       <DependentUpon>CalendarControlItem.cs</DependentUpon>
@@ -96,11 +96,11 @@
     <EmbeddedResource Include="App\Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calendar\CalendarControlItem.resx">
-      <DependentUpon>CalendarControlItem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendar\CalendarControlItem.resx">
+      <DependentUpon>CalendarControlItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

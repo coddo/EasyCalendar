@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Calendar
@@ -9,37 +13,47 @@ namespace EasyCalendar.Calendar
         public CalendarControl()
         {
             InitializeComponent();
+
+            // Generate calendar slots and arrange them
+            CreateCalendarSlots();
         }
 
-        private void RenderCalendar()
+        private void CreateCalendarSlots()
         {
-            // Clear controls
-            this.Controls.Clear();
+            for (int row = 0; row < 6; row++)
+            {
+                for (int column = 0; column < 7; column++)
+                {
+                    this.Controls.Add(new CalendarControlItem());
+                }
+            }
+        }
 
+        private void RenderCalendarSlots()
+        {
             // Compute item size
             Size size = ComputeItemSize();
 
-            // Add items
-            for (int row = 0; row < 7; row++)
+            // Resize and relocate items
+            for (int row = 0; row < 6; row++)
             {
-                for (int column = 0; column < 6; column++)
+                for (int column = 0; column < 7; column++)
                 {
-                    var bounds = new Rectangle
-                    {
-                        Size = size,
-                        Location = new Point(row * size.Width + 1, column * size.Height + 1)
-                    };
+                    var slot = this.Controls[row * 7 + column];
 
-                    this.Controls.Add(new CalendarControlItem(bounds));
+                    slot.Size = size;
+                    slot.Location = new Point(column * size.Width + 3, row * size.Height + 3);
                 }
             }
+
+            this.Refresh();
         }
 
         private Size ComputeItemSize() => new Size(this.Width / 7 - 1, this.Height / 6 - 1);
 
         private void CalendarControl_SizeChanged(object sender, EventArgs e)
         {
-            RenderCalendar();
+            RenderCalendarSlots();
         }
     }
 }
