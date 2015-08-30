@@ -34,7 +34,12 @@ namespace EasyCalendar.Calendar
 
         private Size ComputeItemSize() => new Size(this.Width / 7 - 1, this.Height / 6 - 1);
 
-        private void CalendarControl_SizeChanged(object sender, EventArgs e)
+        private void RepositionNavigationBar()
+        {
+
+        }
+
+        private void RenderSlots()
         {
             // Compute item size
             Size size = ComputeItemSize();
@@ -56,6 +61,12 @@ namespace EasyCalendar.Calendar
             //Controls[2].Location = new Point(3, 25 + 3);
 
             this.Refresh();
+        }
+
+        private void CalendarControl_SizeChanged(object sender, EventArgs e)
+        {
+            RenderSlots();
+            RepositionNavigationBar();
         }
     }
 }

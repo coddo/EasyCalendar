@@ -5,15 +5,15 @@ namespace EasyCalendar.Calendar
 {
     public partial class CalendarSlot : UserControl
     {
-        private static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#78866B");
-        private static readonly Color BORDER_COLOR = ColorTranslator.FromHtml("#E9AB17");
-        private static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#493D26");
+        private static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
+        private static readonly Color BORDER_COLOR = ColorTranslator.FromHtml("#CD802C");
+        private static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
 
         public CalendarSlot()
         {
             InitializeComponent();
 
-            this.BackColor = SLOT_COLOR;
+            this.BackColor = BACK_COLOR;
             dateLabel.ForeColor = TEXT_COLOR;
         }
 

@@ -7,10 +7,12 @@ namespace EasyCalendar.CustomControls
     public partial class OpacityUserControl : UserControl
     {
         public bool drag = false;
-        public bool enab = false;
-        private int m_opacity = 50;
+        public bool enable = false;
+
+        private int opacity = 50;
 
         private int alpha;
+
         public OpacityUserControl()
         {
             InitializeComponent();
@@ -24,19 +26,19 @@ namespace EasyCalendar.CustomControls
         {
             get
             {
-                if (m_opacity > 100)
+                if (opacity > 100)
                 {
-                    m_opacity = 100;
+                    opacity = 100;
                 }
-                else if (m_opacity < 1)
+                else if (opacity < 1)
                 {
-                    m_opacity = 1;
+                    opacity = 1;
                 }
-                return this.m_opacity;
+                return this.opacity;
             }
             set
             {
-                this.m_opacity = value;
+                this.opacity = value;
                 if (this.Parent != null)
                 {
                     Parent.Invalidate(this.Bounds, true);
@@ -56,13 +58,13 @@ namespace EasyCalendar.CustomControls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            Graphics graphics = e.Graphics;
             Rectangle bounds = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
 
-            Color frmColor = this.Parent.BackColor;
-            Brush bckColor = default(Brush);
+            Color formColor = this.Parent.BackColor;
+            Brush backColor = default(Brush);
 
-            alpha = (m_opacity * 255) / 100;
+            alpha = (opacity * 255) / 100;
 
             if (drag)
             {
@@ -70,31 +72,32 @@ namespace EasyCalendar.CustomControls
 
                 if (BackColor != Color.Transparent)
                 {
-                    int Rb = BackColor.R * alpha / 255 + frmColor.R * (255 - alpha) / 255;
-                    int Gb = BackColor.G * alpha / 255 + frmColor.G * (255 - alpha) / 255;
-                    int Bb = BackColor.B * alpha / 255 + frmColor.B * (255 - alpha) / 255;
+                    int Rb = BackColor.R * alpha / 255 + formColor.R * (255 - alpha) / 255;
+                    int Gb = BackColor.G * alpha / 255 + formColor.G * (255 - alpha) / 255;
+                    int Bb = BackColor.B * alpha / 255 + formColor.B * (255 - alpha) / 255;
                     dragBckColor = Color.FromArgb(Rb, Gb, Bb);
                 }
                 else
                 {
-                    dragBckColor = frmColor;
+                    dragBckColor = formColor;
                 }
 
                 alpha = 255;
-                bckColor = new SolidBrush(Color.FromArgb(alpha, dragBckColor));
+                backColor = new SolidBrush(Color.FromArgb(alpha, dragBckColor));
             }
             else
             {
-                bckColor = new SolidBrush(Color.FromArgb(alpha, this.BackColor));
+                backColor = new SolidBrush(Color.FromArgb(alpha, this.BackColor));
             }
 
             if (this.BackColor != Color.Transparent | drag)
             {
-                g.FillRectangle(bckColor, bounds);
+                graphics.FillRectangle(backColor, bounds);
             }
 
-            bckColor.Dispose();
-            g.Dispose();
+            backColor.Dispose();
+            graphics.Dispose();
+
             base.OnPaint(e);
         }
 
@@ -104,6 +107,7 @@ namespace EasyCalendar.CustomControls
             {
                 Parent.Invalidate(this.Bounds, true);
             }
+
             base.OnBackColorChanged(e);
         }
 
