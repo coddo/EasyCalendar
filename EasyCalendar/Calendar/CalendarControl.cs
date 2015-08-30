@@ -8,13 +8,15 @@ namespace EasyCalendar.Calendar
 {
     public partial class CalendarControl : UserControl
     {
+        private static readonly Color CONTROL_COLOR = ColorTranslator.FromHtml("#CD802C");
+
         private List<CalendarSlot> slots = new List<CalendarSlot>();
 
         public CalendarControl()
         {
             InitializeComponent();
 
-            // Generate calendar slots and arrange them
+            // Generate calendar slots
             CreateCalendarSlots();
         }
 
@@ -32,12 +34,7 @@ namespace EasyCalendar.Calendar
             }
         }
 
-        private Size ComputeItemSize() => new Size(this.Width / 7 - 1, this.Height / 6 - 1);
-
-        private void RepositionNavigationBar()
-        {
-
-        }
+        private Size ComputeItemSize() => new Size(this.Width / 7 - 2, this.Height / 6 - 2);
 
         private void RenderSlots()
         {
@@ -51,22 +48,34 @@ namespace EasyCalendar.Calendar
                 {
                     var slot = slots[row * 7 + column];
 
-                    slot.Left = column * size.Width + 3;
-                    slot.Top = row * size.Height + 3;
+                    slot.Left = 2 + column * size.Width + 2 * column;
+                    slot.Top = 3 + row * size.Height + 2 * row;
                     slot.Size = size;
                 }
             }
+        }
 
-            Controls[0].Visible = true;
-            //Controls[2].Location = new Point(3, 25 + 3);
-
-            this.Refresh();
+        private void RepositionNavigationBar()
+        {
+            navigator.Left = this.Width / 2 - navigator.Width / 2;
+            navigator.Top = this.Height - navigator.Height;
         }
 
         private void CalendarControl_SizeChanged(object sender, EventArgs e)
         {
             RenderSlots();
             RepositionNavigationBar();
+        }
+
+        private void CalendarControl_Validated(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+
+        private void CalendarControl_Load(object sender, EventArgs e)
+        {
+            this.BackColor = CONTROL_COLOR;
+            this.ForeColor = CONTROL_COLOR;
         }
     }
 }

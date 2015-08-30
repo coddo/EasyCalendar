@@ -117,6 +117,9 @@
     <EmbeddedResource Include="Calendar\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\OpacityUserControl.resx">
+      <DependentUpon>OpacityUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

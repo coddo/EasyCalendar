@@ -6,8 +6,10 @@ namespace EasyCalendar.Calendar
     public partial class CalendarSlot : UserControl
     {
         private static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
-        private static readonly Color BORDER_COLOR = ColorTranslator.FromHtml("#CD802C");
         private static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
+
+        private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
+        private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";
 
         public CalendarSlot()
         {
@@ -17,32 +19,23 @@ namespace EasyCalendar.Calendar
             dateLabel.ForeColor = TEXT_COLOR;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void RenderDateLabel()
         {
-            base.OnPaint(e);
+            // Render the format of the date
+            //
 
-            var rect = ClientRectangle;
-            rect.Location = new Point(rect.Location.X, rect.Location.Y);
-
-            var pen = new Pen(BORDER_COLOR, 2);
-
-            e.Graphics.DrawRectangle(pen, rect);
+            // Reposition the label
+            this.dateLabel.Left = this.Width / 2 - this.dateLabel.Width / 2;
         }
-
 
         private void CalendarSlot_SizeChanged(object sender, System.EventArgs e)
         {
-            RepositionDateLabel();
+            RenderDateLabel();
         }
 
         private void dateLabel_TextChanged(object sender, System.EventArgs e)
         {
-            RepositionDateLabel();
-        }
-
-        private void RepositionDateLabel()
-        {
-            this.dateLabel.Left = this.Width / 2 - this.dateLabel.Width / 2;
+            RenderDateLabel();
         }
     }
 }

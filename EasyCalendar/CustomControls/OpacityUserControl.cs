@@ -9,9 +9,9 @@ namespace EasyCalendar.CustomControls
         public bool drag = false;
         public bool enable = false;
 
-        private int opacity = 50;
+        private int opacity = 100;
 
-        private int alpha;
+        private int alpha = 255;
 
         public OpacityUserControl()
         {

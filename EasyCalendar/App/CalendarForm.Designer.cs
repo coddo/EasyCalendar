@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.calendarControl = new EasyCalendar.Calendar.CalendarControl();
-            this.navigationBar1 = new EasyCalendar.Calendar.NavigationBar();
             this.SuspendLayout();
             // 
             // calendarControl
@@ -41,22 +40,12 @@
             this.calendarControl.Size = new System.Drawing.Size(637, 549);
             this.calendarControl.TabIndex = 0;
             // 
-            // navigationBar1
-            // 
-            this.navigationBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(110)))), ((int)(((byte)(109)))));
-            this.navigationBar1.Location = new System.Drawing.Point(254, 12);
-            this.navigationBar1.Name = "navigationBar1";
-            this.navigationBar1.Opacity = 50;
-            this.navigationBar1.Size = new System.Drawing.Size(371, 64);
-            this.navigationBar1.TabIndex = 1;
-            // 
             // CalendarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(637, 549);
-            this.Controls.Add(this.navigationBar1);
             this.Controls.Add(this.calendarControl);
             this.DoubleBuffered = true;
             this.Name = "CalendarForm";
@@ -72,6 +61,5 @@
         #endregion
 
         private EasyCalendar.Calendar.CalendarControl calendarControl;
-        private Calendar.NavigationBar navigationBar1;
     }
 }

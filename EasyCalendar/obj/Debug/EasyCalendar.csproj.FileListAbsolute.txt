@@ -1,11 +1,6 @@
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.exe.config
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.exe
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.pdb
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csprojResolveAssemblyReference.cache
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Properties.Resources.resources
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csproj.GenerateResource.Cache
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.exe
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.pdb
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.dll
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\System.Data.SQLite.dll
@@ -14,7 +9,12 @@ C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\System.Data.SQLite.Li
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.xml
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\System.Data.SQLite.xml
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarControl.resources
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.App.CalendarForm.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarControl.resources
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarSlot.resources
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.NavigationBar.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.CustomControls.OpacityUserControl.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Properties.Resources.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csproj.GenerateResource.Cache
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.exe
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.pdb

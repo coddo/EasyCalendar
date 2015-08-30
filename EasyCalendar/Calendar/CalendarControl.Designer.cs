@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.navigator = new EasyCalendar.Calendar.NavigationBar();
             this.SuspendLayout();
+            // 
+            // navigator
+            // 
+            this.navigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(110)))), ((int)(((byte)(109)))));
+            this.navigator.Location = new System.Drawing.Point(3, 346);
+            this.navigator.Name = "navigator";
+            this.navigator.Size = new System.Drawing.Size(439, 76);
+            this.navigator.TabIndex = 0;
             // 
             // CalendarControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.navigator);
             this.DoubleBuffered = true;
             this.Name = "CalendarControl";
-            this.Size = new System.Drawing.Size(414, 425);
+            this.Size = new System.Drawing.Size(452, 425);
+            this.Load += new System.EventHandler(this.CalendarControl_Load);
             this.SizeChanged += new System.EventHandler(this.CalendarControl_SizeChanged);
+            this.Validated += new System.EventHandler(this.CalendarControl_Validated);
             this.ResumeLayout(false);
 
         }
+
+        private NavigationBar navigator;
 
         #endregion
     }
