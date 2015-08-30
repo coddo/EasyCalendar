@@ -33,9 +33,10 @@
             // 
             // navigator
             // 
-            this.navigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(110)))), ((int)(((byte)(109)))));
+            this.navigator.BackColor = System.Drawing.Color.Transparent;
             this.navigator.Location = new System.Drawing.Point(3, 346);
             this.navigator.Name = "navigator";
+            this.navigator.Opacity = 80;
             this.navigator.Size = new System.Drawing.Size(439, 76);
             this.navigator.TabIndex = 0;
             // 

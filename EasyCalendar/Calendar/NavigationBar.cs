@@ -1,10 +1,9 @@
 ﻿using EasyCalendar.CustomControls;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace EasyCalendar.Calendar
 {
-    public partial class NavigationBar : UserControl
+    public partial class NavigationBar : OpacityUserControl
     {
         private static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#726E6D");
 
@@ -13,17 +12,26 @@ namespace EasyCalendar.Calendar
         public NavigationBar()
         {
             InitializeComponent();
+        }
 
-            this.BackColor = BACK_COLOR;
-            nextButton.BackColor = BACK_COLOR;
-            previousButton.BackColor = BACK_COLOR;
-
-            //this.Opacity = 50;
+        public override void Refresh()
+        {
+            base.Refresh();
+            nextButton.Refresh();
+            previousButton.Refresh();
+            datePicker.Refresh();
         }
 
         public NavigationBar(CalendarControl parent) : this()
         {
             this.parent = parent;
+        }
+
+        private void NavigationBar_Load(object sender, System.EventArgs e)
+        {
+            this.BackColor = BACK_COLOR;
+            nextButton.BackColor = Color.Transparent;
+            previousButton.BackColor = Color.Transparent;
         }
 
         private void nextButton_Click(object sender, System.EventArgs e)

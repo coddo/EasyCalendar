@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Calendar
@@ -59,6 +58,14 @@ namespace EasyCalendar.Calendar
         {
             navigator.Left = this.Width / 2 - navigator.Width / 2;
             navigator.Top = this.Height - navigator.Height;
+
+            navigator.Refresh();
+        }
+
+        public override void Refresh()
+        {
+            base.Refresh();
+            navigator.Refresh();
         }
 
         private void CalendarControl_SizeChanged(object sender, EventArgs e)
@@ -70,12 +77,12 @@ namespace EasyCalendar.Calendar
         private void CalendarControl_Validated(object sender, EventArgs e)
         {
             this.Refresh();
+            navigator.Refresh();
         }
 
         private void CalendarControl_Load(object sender, EventArgs e)
         {
             this.BackColor = CONTROL_COLOR;
-            this.ForeColor = CONTROL_COLOR;
         }
     }
 }

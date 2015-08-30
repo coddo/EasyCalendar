@@ -7,16 +7,12 @@ namespace EasyCalendar.CustomControls
     public partial class OpacityUserControl : UserControl
     {
         public bool drag = false;
-        public bool enable = false;
-
+        public bool enabled = false;
         private int opacity = 100;
 
-        private int alpha = 255;
-
+        private int alpha;
         public OpacityUserControl()
         {
-            InitializeComponent();
-
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.Opaque, true);
             this.BackColor = Color.Transparent;
@@ -39,6 +35,7 @@ namespace EasyCalendar.CustomControls
             set
             {
                 this.opacity = value;
+
                 if (this.Parent != null)
                 {
                     Parent.Invalidate(this.Bounds, true);
@@ -58,7 +55,7 @@ namespace EasyCalendar.CustomControls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics graphics = e.Graphics;
+            Graphics g = e.Graphics;
             Rectangle bounds = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
 
             Color formColor = this.Parent.BackColor;
@@ -92,12 +89,11 @@ namespace EasyCalendar.CustomControls
 
             if (this.BackColor != Color.Transparent | drag)
             {
-                graphics.FillRectangle(backColor, bounds);
+                g.FillRectangle(backColor, bounds);
             }
 
             backColor.Dispose();
-            graphics.Dispose();
-
+            g.Dispose();
             base.OnPaint(e);
         }
 
@@ -105,9 +101,8 @@ namespace EasyCalendar.CustomControls
         {
             if (this.Parent != null)
             {
-                Parent.Invalidate(this.Bounds, true);
+                Parent.Invalidate(this.Bounds, false);
             }
-
             base.OnBackColorChanged(e);
         }
 

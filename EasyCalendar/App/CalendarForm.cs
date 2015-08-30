@@ -20,5 +20,10 @@ namespace EasyCalendar.App
         {
             Text = $"{Size.Width} x {Size.Height}";
         }
+
+        private void CalendarForm_Shown(object sender, System.EventArgs e)
+        {
+            calendarControl.Refresh();
+        }
     }
 }

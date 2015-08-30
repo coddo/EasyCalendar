@@ -33,8 +33,9 @@
             // 
             // calendarControl
             // 
-            this.calendarControl.BackColor = System.Drawing.Color.Transparent;
+            this.calendarControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(128)))), ((int)(((byte)(44)))));
             this.calendarControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.calendarControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(128)))), ((int)(((byte)(44)))));
             this.calendarControl.Location = new System.Drawing.Point(0, 0);
             this.calendarControl.Name = "calendarControl";
             this.calendarControl.Size = new System.Drawing.Size(637, 549);
@@ -52,6 +53,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calendar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.CalendarForm_Shown);
             this.SizeChanged += new System.EventHandler(this.CalendarForm_SizeChanged);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Calendar_MouseMove);
             this.ResumeLayout(false);

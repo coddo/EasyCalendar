@@ -28,10 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.nextButton = new System.Windows.Forms.Button();
             this.previousButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
+            // 
+            // previousButton
+            // 
+            this.previousButton.BackColor = System.Drawing.Color.Transparent;
+            this.previousButton.BackgroundImage = global::EasyCalendar.Properties.Resources.previous;
+            this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previousButton.FlatAppearance.BorderSize = 0;
+            this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousButton.Location = new System.Drawing.Point(3, 5);
+            this.previousButton.Name = "previousButton";
+            this.previousButton.Size = new System.Drawing.Size(64, 64);
+            this.previousButton.TabIndex = 2;
+            this.previousButton.UseVisualStyleBackColor = false;
+            this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
+            // 
+            // nextButton
+            // 
+            this.nextButton.BackColor = System.Drawing.Color.Transparent;
+            this.nextButton.BackgroundImage = global::EasyCalendar.Properties.Resources.next;
+            this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nextButton.FlatAppearance.BorderSize = 0;
+            this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextButton.Location = new System.Drawing.Point(370, 5);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(64, 64);
+            this.nextButton.TabIndex = 1;
+            this.nextButton.UseVisualStyleBackColor = false;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // datePicker
             // 
@@ -44,49 +76,17 @@
             this.datePicker.Size = new System.Drawing.Size(291, 39);
             this.datePicker.TabIndex = 0;
             // 
-            // nextButton
-            // 
-            this.nextButton.BackColor = System.Drawing.Color.Transparent;
-            this.nextButton.BackgroundImage = global::EasyCalendar.Properties.Resources.next;
-            this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.nextButton.FlatAppearance.BorderSize = 0;
-            this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(370, 3);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(64, 64);
-            this.nextButton.TabIndex = 1;
-            this.nextButton.UseVisualStyleBackColor = false;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
-            // 
-            // previousButton
-            // 
-            this.previousButton.BackColor = System.Drawing.Color.Transparent;
-            this.previousButton.BackgroundImage = global::EasyCalendar.Properties.Resources.previous;
-            this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.previousButton.FlatAppearance.BorderSize = 0;
-            this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Location = new System.Drawing.Point(3, 3);
-            this.previousButton.Name = "previousButton";
-            this.previousButton.Size = new System.Drawing.Size(64, 64);
-            this.previousButton.TabIndex = 2;
-            this.previousButton.UseVisualStyleBackColor = false;
-            this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
-            // 
             // NavigationBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.datePicker);
-            this.DoubleBuffered = true;
             this.Name = "NavigationBar";
             this.Size = new System.Drawing.Size(439, 76);
+            this.Load += new System.EventHandler(this.NavigationBar_Load);
             this.ResumeLayout(false);
 
         }
