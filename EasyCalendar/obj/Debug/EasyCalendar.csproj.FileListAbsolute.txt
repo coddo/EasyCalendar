@@ -1,0 +1,9 @@
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.exe.config
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.exe
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EasyCalendar.pdb
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csprojResolveAssemblyReference.cache
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Form1.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Properties.Resources.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csproj.GenerateResource.Cache
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.exe
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.pdb
