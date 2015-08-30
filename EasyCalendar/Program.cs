@@ -13,7 +13,7 @@ namespace EasyCalendar
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new App.Calendar());
+            Application.Run(new App.CalendarForm());
         }
     }
 }

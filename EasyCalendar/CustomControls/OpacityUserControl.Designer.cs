@@ -1,6 +1,6 @@
-﻿namespace EasyCalendar.Calendar
+﻿namespace EasyCalendar.CustomControls
 {
-    partial class CalendarControl
+    partial class OpacityUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,19 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // CalendarControl
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.DoubleBuffered = true;
-            this.Name = "CalendarControl";
-            this.Size = new System.Drawing.Size(414, 425);
-            this.SizeChanged += new System.EventHandler(this.CalendarControl_SizeChanged);
-            this.ResumeLayout(false);
-
         }
 
         #endregion

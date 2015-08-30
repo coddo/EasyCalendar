@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Calendar
 {
     public partial class CalendarControl : UserControl
     {
+        private List<CalendarSlot> slots = new List<CalendarSlot>();
+
         public CalendarControl()
         {
             InitializeComponent();
@@ -24,12 +24,17 @@ namespace EasyCalendar.Calendar
             {
                 for (int column = 0; column < 7; column++)
                 {
-                    this.Controls.Add(new CalendarControlItem());
+                    var slot = new CalendarSlot();
+
+                    slots.Add(slot);
+                    this.Controls.Add(slot);
                 }
             }
         }
 
-        private void RenderCalendarSlots()
+        private Size ComputeItemSize() => new Size(this.Width / 7 - 1, this.Height / 6 - 1);
+
+        private void CalendarControl_SizeChanged(object sender, EventArgs e)
         {
             // Compute item size
             Size size = ComputeItemSize();
@@ -39,21 +44,18 @@ namespace EasyCalendar.Calendar
             {
                 for (int column = 0; column < 7; column++)
                 {
-                    var slot = this.Controls[row * 7 + column];
+                    var slot = slots[row * 7 + column];
 
+                    slot.Left = column * size.Width + 3;
+                    slot.Top = row * size.Height + 3;
                     slot.Size = size;
-                    slot.Location = new Point(column * size.Width + 3, row * size.Height + 3);
                 }
             }
 
+            Controls[0].Visible = true;
+            //Controls[2].Location = new Point(3, 25 + 3);
+
             this.Refresh();
-        }
-
-        private Size ComputeItemSize() => new Size(this.Width / 7 - 1, this.Height / 6 - 1);
-
-        private void CalendarControl_SizeChanged(object sender, EventArgs e)
-        {
-            RenderCalendarSlots();
         }
     }
 }

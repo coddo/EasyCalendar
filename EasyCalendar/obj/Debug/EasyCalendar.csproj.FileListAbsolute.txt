@@ -14,6 +14,7 @@ C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\System.Data.SQLite.Li
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.xml
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\bin\Debug\System.Data.SQLite.xml
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarControlItem.resources
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarControl.resources
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.App.Calendar.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.App.CalendarForm.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.CalendarSlot.resources
+C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Calendar.NavigationBar.resources

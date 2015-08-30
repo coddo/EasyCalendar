@@ -73,17 +73,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\Calendar.cs">
+    <Compile Include="App\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Calendar.Designer.cs">
-      <DependentUpon>Calendar.cs</DependentUpon>
+    <Compile Include="App\CalendarForm.Designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calendar\CalendarControlItem.cs">
+    <Compile Include="Calendar\CalendarSlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Calendar\CalendarControlItem.Designer.cs">
-      <DependentUpon>CalendarControlItem.cs</DependentUpon>
+    <Compile Include="Calendar\CalendarSlot.Designer.cs">
+      <DependentUpon>CalendarSlot.cs</DependentUpon>
     </Compile>
     <Compile Include="Calendar\CalendarControl.cs">
       <SubType>UserControl</SubType>
@@ -91,16 +91,31 @@
     <Compile Include="Calendar\CalendarControl.Designer.cs">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calendar\NavigationBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Calendar\NavigationBar.Designer.cs">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\OpacityUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\OpacityUserControl.Designer.cs">
+      <DependentUpon>OpacityUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="App\Calendar.resx">
-      <DependentUpon>Calendar.cs</DependentUpon>
+    <EmbeddedResource Include="App\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calendar\CalendarControlItem.resx">
-      <DependentUpon>CalendarControlItem.cs</DependentUpon>
+    <EmbeddedResource Include="Calendar\CalendarSlot.resx">
+      <DependentUpon>CalendarSlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calendar\NavigationBar.resx">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,7 +141,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\nearby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\past.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\today.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
