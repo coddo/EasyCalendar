@@ -5,8 +5,8 @@ namespace EasyCalendar.Calendar
 {
     public partial class CalendarSlot : UserControl
     {
-        private static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
-        private static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
+        public static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
+        public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
 
         private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
         private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";

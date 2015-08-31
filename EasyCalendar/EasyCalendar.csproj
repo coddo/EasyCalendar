@@ -97,12 +97,6 @@
     <Compile Include="Calendar\NavigationBar.Designer.cs">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\OpacityUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControls\OpacityUserControl.Designer.cs">
-      <DependentUpon>OpacityUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
@@ -116,9 +110,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calendar\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControls\OpacityUserControl.resx">
-      <DependentUpon>OpacityUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

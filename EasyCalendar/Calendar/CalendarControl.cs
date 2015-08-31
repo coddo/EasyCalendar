@@ -7,7 +7,7 @@ namespace EasyCalendar.Calendar
 {
     public partial class CalendarControl : UserControl
     {
-        private static readonly Color CONTROL_COLOR = ColorTranslator.FromHtml("#CD802C");
+        public static readonly Color CONTROL_COLOR = ColorTranslator.FromHtml("#CD802C");
 
         private List<CalendarSlot> slots = new List<CalendarSlot>();
 
@@ -57,27 +57,13 @@ namespace EasyCalendar.Calendar
         private void RepositionNavigationBar()
         {
             navigator.Left = this.Width / 2 - navigator.Width / 2;
-            navigator.Top = this.Height - navigator.Height;
-
-            navigator.Refresh();
-        }
-
-        public override void Refresh()
-        {
-            base.Refresh();
-            navigator.Refresh();
+            navigator.Top = this.Height - 5;
         }
 
         private void CalendarControl_SizeChanged(object sender, EventArgs e)
         {
             RenderSlots();
             RepositionNavigationBar();
-        }
-
-        private void CalendarControl_Validated(object sender, EventArgs e)
-        {
-            this.Refresh();
-            navigator.Refresh();
         }
 
         private void CalendarControl_Load(object sender, EventArgs e)

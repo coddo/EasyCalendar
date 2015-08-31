@@ -36,7 +36,6 @@
             this.navigator.BackColor = System.Drawing.Color.Transparent;
             this.navigator.Location = new System.Drawing.Point(3, 346);
             this.navigator.Name = "navigator";
-            this.navigator.Opacity = 80;
             this.navigator.Size = new System.Drawing.Size(439, 76);
             this.navigator.TabIndex = 0;
             // 
@@ -51,7 +50,6 @@
             this.Size = new System.Drawing.Size(452, 425);
             this.Load += new System.EventHandler(this.CalendarControl_Load);
             this.SizeChanged += new System.EventHandler(this.CalendarControl_SizeChanged);
-            this.Validated += new System.EventHandler(this.CalendarControl_Validated);
             this.ResumeLayout(false);
 
         }
