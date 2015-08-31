@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Coddo")]
 [assembly: AssemblyProduct("EasyCalendar")]
-[assembly: AssemblyCopyright("Copyright ©Coddo  2015")]
+[assembly: AssemblyCopyright("Copyright © 2015 Coddo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
