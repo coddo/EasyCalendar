@@ -19,7 +19,7 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         #region Properties
 
-        public DateTime Date
+        /*public DateTime Date
         {
             get
             {
@@ -34,7 +34,7 @@ namespace EasyCalendar.CalendarControls.Navigation
                 this.monthBox.SelectedIndex = date.Month;
                 this.yearBox.SelectedIndex = date.Year - DateTime.Now.Year;
             }
-        }
+        }*/
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace EasyCalendar.CalendarControls.Navigation
             InitializeComponent();
 
             PopulateYearBox();
-            this.Date = DateTime.Now.Date;
+            //this.Date = DateTime.Now.Date;
         }
 
         #region Overrides
@@ -154,7 +154,7 @@ namespace EasyCalendar.CalendarControls.Navigation
             }
             else
             {
-                this.Date = date;
+                //this.Date = date;
             }
         }
 

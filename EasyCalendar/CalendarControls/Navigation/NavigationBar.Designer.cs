@@ -30,6 +30,7 @@
         {
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
+            this.datePicker1 = new EasyCalendar.CalendarControls.Navigation.DatePicker();
             this.SuspendLayout();
             // 
             // previousButton
@@ -41,9 +42,9 @@
             this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Location = new System.Drawing.Point(18, 18);
+            this.previousButton.Location = new System.Drawing.Point(18, 13);
             this.previousButton.Name = "previousButton";
-            this.previousButton.Size = new System.Drawing.Size(40, 40);
+            this.previousButton.Size = new System.Drawing.Size(50, 50);
             this.previousButton.TabIndex = 2;
             this.previousButton.UseVisualStyleBackColor = false;
             this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
@@ -57,18 +58,29 @@
             this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(388, 18);
+            this.nextButton.Location = new System.Drawing.Point(371, 13);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(40, 40);
+            this.nextButton.Size = new System.Drawing.Size(50, 50);
             this.nextButton.TabIndex = 1;
             this.nextButton.UseVisualStyleBackColor = false;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // datePicker1
+            // 
+            this.datePicker1.BackColor = System.Drawing.Color.Transparent;
+            this.datePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.datePicker1.Location = new System.Drawing.Point(75, 16);
+            this.datePicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.datePicker1.Name = "datePicker1";
+            this.datePicker1.Size = new System.Drawing.Size(289, 44);
+            this.datePicker1.TabIndex = 3;
             // 
             // NavigationBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.datePicker1);
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
             this.Name = "NavigationBar";
@@ -83,5 +95,6 @@
         #endregion
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button previousButton;
+        private DatePicker datePicker1;
     }
 }

@@ -68,9 +68,10 @@
             "29",
             "30",
             "31"});
-            this.dayBox.Location = new System.Drawing.Point(3, 3);
+            this.dayBox.Location = new System.Drawing.Point(4, 4);
+            this.dayBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dayBox.Name = "dayBox";
-            this.dayBox.Size = new System.Drawing.Size(54, 21);
+            this.dayBox.Size = new System.Drawing.Size(53, 33);
             this.dayBox.TabIndex = 0;
             this.dayBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
             this.dayBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
@@ -90,9 +91,10 @@
             "September",
             "October",
             "November"});
-            this.monthBox.Location = new System.Drawing.Point(63, 3);
+            this.monthBox.Location = new System.Drawing.Point(67, 4);
+            this.monthBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.monthBox.Name = "monthBox";
-            this.monthBox.Size = new System.Drawing.Size(158, 21);
+            this.monthBox.Size = new System.Drawing.Size(132, 33);
             this.monthBox.TabIndex = 1;
             this.monthBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
             this.monthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
@@ -100,23 +102,26 @@
             // yearBox
             // 
             this.yearBox.FormattingEnabled = true;
-            this.yearBox.Location = new System.Drawing.Point(227, 3);
+            this.yearBox.Location = new System.Drawing.Point(208, 4);
+            this.yearBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.yearBox.Name = "yearBox";
-            this.yearBox.Size = new System.Drawing.Size(80, 21);
+            this.yearBox.Size = new System.Drawing.Size(75, 33);
             this.yearBox.TabIndex = 2;
             this.yearBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
             this.yearBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
             // 
             // DatePicker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.yearBox);
             this.Controls.Add(this.monthBox);
             this.Controls.Add(this.dayBox);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DatePicker";
-            this.Size = new System.Drawing.Size(310, 29);
+            this.Size = new System.Drawing.Size(292, 44);
             this.ResumeLayout(false);
 
         }
