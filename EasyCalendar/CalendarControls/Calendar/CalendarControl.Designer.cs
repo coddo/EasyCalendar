@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.Calendar
+﻿namespace EasyCalendar.CalendarControls.Calendar
 {
     partial class CalendarControl
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.navigator = new EasyCalendar.Calendar.NavigationBar();
+            this.navigator = new EasyCalendar.CalendarControls.Navigation.NavigationBar();
             this.SuspendLayout();
             // 
             // navigator
@@ -54,7 +54,7 @@
 
         }
 
-        private NavigationBar navigator;
+        private EasyCalendar.CalendarControls.Navigation.NavigationBar navigator;
 
         #endregion
     }

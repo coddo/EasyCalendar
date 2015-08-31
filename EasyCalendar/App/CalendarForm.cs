@@ -1,5 +1,4 @@
-﻿using EasyCalendar.Calendar;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.App

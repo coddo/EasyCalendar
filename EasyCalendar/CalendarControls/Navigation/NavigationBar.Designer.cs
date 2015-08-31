@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.Calendar
+﻿namespace EasyCalendar.CalendarControls.Navigation
 {
     partial class NavigationBar
     {
@@ -76,7 +76,6 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(318, 39);
             this.datePicker.TabIndex = 0;
-            this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
             // NavigationBar
             // 

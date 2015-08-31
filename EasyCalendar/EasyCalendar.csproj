@@ -79,22 +79,22 @@
     <Compile Include="App\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calendar\CalendarSlot.cs">
+    <Compile Include="CalendarControls\Calendar\CalendarSlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Calendar\CalendarSlot.Designer.cs">
+    <Compile Include="CalendarControls\Calendar\CalendarSlot.Designer.cs">
       <DependentUpon>CalendarSlot.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calendar\CalendarControl.cs">
+    <Compile Include="CalendarControls\Calendar\CalendarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Calendar\CalendarControl.Designer.cs">
+    <Compile Include="CalendarControls\Calendar\CalendarControl.Designer.cs">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calendar\NavigationBar.cs">
+    <Compile Include="CalendarControls\Navigation\NavigationBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Calendar\NavigationBar.Designer.cs">
+    <Compile Include="CalendarControls\Navigation\NavigationBar.Designer.cs">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -102,13 +102,13 @@
     <EmbeddedResource Include="App\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calendar\CalendarControl.resx">
+    <EmbeddedResource Include="CalendarControls\Calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calendar\CalendarSlot.resx">
+    <EmbeddedResource Include="CalendarControls\Calendar\CalendarSlot.resx">
       <DependentUpon>CalendarSlot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calendar\NavigationBar.resx">
+    <EmbeddedResource Include="CalendarControls\Navigation\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

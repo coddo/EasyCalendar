@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.Calendar
+﻿namespace EasyCalendar.CalendarControls.Calendar
 {
     partial class CalendarSlot
     {

@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace EasyCalendar.Calendar
+namespace EasyCalendar.CalendarControls.Calendar
 {
     public partial class CalendarControl : UserControl
     {
+        #region Constants
+
         public static readonly Color CONTROL_COLOR = ColorTranslator.FromHtml("#CD802C");
 
+        #endregion
+
+        #region Fields
+
         private List<CalendarSlot> slots = new List<CalendarSlot>();
+
+        #endregion
 
         public CalendarControl()
         {
@@ -18,6 +26,8 @@ namespace EasyCalendar.Calendar
             // Generate calendar slots
             CreateCalendarSlots();
         }
+
+        #region Methods
 
         private void CreateCalendarSlots()
         {
@@ -54,6 +64,10 @@ namespace EasyCalendar.Calendar
             }
         }
 
+        #endregion
+
+        #region Events
+
         private void RepositionNavigationBar()
         {
             navigator.Left = this.Width / 2 - navigator.Width / 2;
@@ -70,5 +84,7 @@ namespace EasyCalendar.Calendar
         {
             this.BackColor = CONTROL_COLOR;
         }
+
+        #endregion
     }
 }

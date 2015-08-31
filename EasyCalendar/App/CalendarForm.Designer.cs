@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.calendarControl = new EasyCalendar.Calendar.CalendarControl();
+            this.calendarControl = new EasyCalendar.CalendarControls.Calendar.CalendarControl();
             this.SuspendLayout();
             // 
             // calendarControl
@@ -62,6 +62,6 @@
 
         #endregion
 
-        private EasyCalendar.Calendar.CalendarControl calendarControl;
+        private EasyCalendar.CalendarControls.Calendar.CalendarControl calendarControl;
     }
 }

@@ -1,15 +1,24 @@
-﻿using System;
+﻿using EasyCalendar.CalendarControls.Calendar;
+using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace EasyCalendar.Calendar
+namespace EasyCalendar.CalendarControls.Navigation
 {
     public partial class NavigationBar : UserControl
     {
+        #region Constants
+
         public const int FLOW_HEIGHT = 30;
 
+        #endregion
+
+        #region Fields
+
         private CalendarControl parent;
+
+        #endregion
 
         public NavigationBar()
         {
@@ -20,6 +29,23 @@ namespace EasyCalendar.Calendar
         {
             this.parent = parent;
         }
+
+        #region Overrides
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            var rect = this.ClientRectangle;
+            var pen = new Pen(CalendarSlot.TEXT_COLOR, 3);
+
+            e.Graphics.DrawRectangle(pen, rect);
+
+        }
+
+        #endregion
+
+        #region Methods
 
         private bool IsPointerOverChild()
         {
@@ -35,16 +61,9 @@ namespace EasyCalendar.Calendar
             return false;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
+        #endregion
 
-            var rect = this.ClientRectangle;
-            var pen = new Pen(CalendarSlot.TEXT_COLOR, 3);
-
-            e.Graphics.DrawRectangle(pen, rect);
-
-        }
+        #region Events
 
         private void NavigationBar_Load(object sender, System.EventArgs e)
         {
@@ -128,13 +147,6 @@ namespace EasyCalendar.Calendar
             }).Start();
         }
 
-        private void NavigationBar_MouseLeave(object sender, System.EventArgs e)
-        {
-        }
-
-        private void datePicker_ValueChanged(object sender, System.EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

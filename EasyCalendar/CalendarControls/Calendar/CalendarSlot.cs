@@ -1,15 +1,19 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace EasyCalendar.Calendar
+namespace EasyCalendar.CalendarControls.Calendar
 {
     public partial class CalendarSlot : UserControl
     {
+        #region Constants
+
         public static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
         public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
 
         private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
         private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";
+
+        #endregion
 
         public CalendarSlot()
         {
@@ -18,6 +22,8 @@ namespace EasyCalendar.Calendar
             this.BackColor = BACK_COLOR;
             dateLabel.ForeColor = TEXT_COLOR;
         }
+
+        #region Methods
 
         private void RenderDateLabel()
         {
@@ -28,6 +34,10 @@ namespace EasyCalendar.Calendar
             this.dateLabel.Left = this.Width / 2 - this.dateLabel.Width / 2;
         }
 
+        #endregion
+
+        #region Events
+
         private void CalendarSlot_SizeChanged(object sender, System.EventArgs e)
         {
             RenderDateLabel();
@@ -37,5 +47,7 @@ namespace EasyCalendar.Calendar
         {
             RenderDateLabel();
         }
+
+        #endregion
     }
 }
