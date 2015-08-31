@@ -9,7 +9,7 @@ namespace EasyCalendar.CalendarControls.Calendar
     {
         #region Constants
 
-        public static readonly Color CONTROL_COLOR = ColorTranslator.FromHtml("#CD802C");
+        public static readonly Color CALENDAR_CONTROL_COLOR = ColorTranslator.FromHtml("#D8852A");
 
         #endregion
 
@@ -82,7 +82,7 @@ namespace EasyCalendar.CalendarControls.Calendar
 
         private void CalendarControl_Load(object sender, EventArgs e)
         {
-            this.BackColor = CONTROL_COLOR;
+            this.BackColor = CALENDAR_CONTROL_COLOR;
         }
 
         #endregion

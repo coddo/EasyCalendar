@@ -10,6 +10,8 @@ namespace EasyCalendar.CalendarControls.Navigation
     {
         #region Constants
 
+        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#ea902d");
+
         public const int FLOW_HEIGHT = 30;
 
         #endregion
@@ -32,7 +34,7 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         #region Overrides
 
-        protected override void OnPaint(PaintEventArgs e)
+        /*protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
@@ -41,7 +43,7 @@ namespace EasyCalendar.CalendarControls.Navigation
 
             e.Graphics.DrawRectangle(pen, rect);
 
-        }
+        }*/
 
         #endregion
 
@@ -55,8 +57,8 @@ namespace EasyCalendar.CalendarControls.Navigation
             if (nextButton.ClientRectangle.Contains(nextButton.PointToClient(MousePosition)))
                 return true;
 
-            if (datePicker.ClientRectangle.Contains(datePicker.PointToClient(MousePosition)))
-                return true;
+            //if (datePicker.ClientRectangle.Contains(datePicker.PointToClient(MousePosition)))
+            //    return true;
 
             return false;
         }
@@ -67,6 +69,7 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         private void NavigationBar_Load(object sender, System.EventArgs e)
         {
+            this.BackColor = NAVI_COLOR;
         }
 
         private void nextButton_Click(object sender, System.EventArgs e)

@@ -36,11 +36,11 @@
             // 
             this.dateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Font = new System.Drawing.Font("Marta", 10F);
+            this.dateLabel.Font = new System.Drawing.Font("Marta", 11F);
             this.dateLabel.ForeColor = System.Drawing.Color.Black;
             this.dateLabel.Location = new System.Drawing.Point(37, 150);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(126, 17);
+            this.dateLabel.Size = new System.Drawing.Size(133, 18);
             this.dateLabel.TabIndex = 1;
             this.dateLabel.Text = "12 September 2015";
             this.dateLabel.TextChanged += new System.EventHandler(this.dateLabel_TextChanged);

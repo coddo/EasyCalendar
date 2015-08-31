@@ -7,8 +7,8 @@ namespace EasyCalendar.CalendarControls.Calendar
     {
         #region Constants
 
-        public static readonly Color BACK_COLOR = ColorTranslator.FromHtml("#4D5965");
-        public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#D1B800");
+        public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#4D4D4D");
+        public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#EFAE12");
 
         private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
         private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";
@@ -19,7 +19,7 @@ namespace EasyCalendar.CalendarControls.Calendar
         {
             InitializeComponent();
 
-            this.BackColor = BACK_COLOR;
+            this.BackColor = SLOT_COLOR;
             dateLabel.ForeColor = TEXT_COLOR;
         }
 

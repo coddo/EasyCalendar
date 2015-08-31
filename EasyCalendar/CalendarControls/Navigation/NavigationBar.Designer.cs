@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationBar));
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // previousButton
@@ -53,7 +51,7 @@
             // nextButton
             // 
             this.nextButton.BackColor = System.Drawing.Color.Transparent;
-            this.nextButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextButton.BackgroundImage")));
+            this.nextButton.BackgroundImage = global::EasyCalendar.Properties.Resources.next;
             this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextButton.FlatAppearance.BorderSize = 0;
             this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -66,25 +64,13 @@
             this.nextButton.UseVisualStyleBackColor = false;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // datePicker
-            // 
-            this.datePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 21F);
-            this.datePicker.CustomFormat = "dd MMMM yyyy";
-            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F);
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(64, 19);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(318, 39);
-            this.datePicker.TabIndex = 0;
-            // 
             // NavigationBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
-            this.Controls.Add(this.datePicker);
             this.Name = "NavigationBar";
             this.Size = new System.Drawing.Size(449, 78);
             this.Load += new System.EventHandler(this.NavigationBar_Load);
@@ -95,8 +81,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button previousButton;
     }
