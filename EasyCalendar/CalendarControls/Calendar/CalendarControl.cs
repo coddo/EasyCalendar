@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace EasyCalendar.CalendarControls.Calendar
 {
-    public partial class CalendarControl : UserControl
+    public partial class CalendarControl : UserControl, IObserver
     {
         #region Constants
 
@@ -64,6 +64,11 @@ namespace EasyCalendar.CalendarControls.Calendar
             }
         }
 
+        public void UpdateData()
+        {
+            
+        }
+
         #endregion
 
         #region Events
@@ -83,6 +88,8 @@ namespace EasyCalendar.CalendarControls.Calendar
         private void CalendarControl_Load(object sender, EventArgs e)
         {
             this.BackColor = CALENDAR_CONTROL_COLOR;
+
+            this.navigator.DatePicker.Observer = this;
         }
 
         #endregion

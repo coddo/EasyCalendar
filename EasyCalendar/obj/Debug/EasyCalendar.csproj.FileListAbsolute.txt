@@ -18,4 +18,3 @@ C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.Properti
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csproj.GenerateResource.Cache
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.exe
 C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.pdb
-C:\Users\codob\Desktop\EasyCalendar\EasyCalendar\obj\Debug\EasyCalendar.csprojResolveAssemblyReference.cache

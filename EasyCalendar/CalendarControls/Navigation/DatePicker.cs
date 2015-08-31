@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace EasyCalendar.CalendarControls.Navigation
 {
-    public partial class DatePicker : UserControl
+    public partial class DatePicker : UserControl, IObservable
     {
         #region Constants
 
@@ -13,28 +13,66 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         #region Fields
 
-        private DateTime date;
+        private int month;
+        private int year;
 
         #endregion
 
         #region Properties
 
-        /*public DateTime Date
+        public int Month
         {
             get
             {
-                return date;
+                return this.month;
             }
-
             set
             {
-                this.date = value;
+                if (value > 12)
+                {
+                    value = 1;
+                    Year++;
+                }
+                else if (value < 1)
+                {
+                    value = 1;
+                    Year--;
+                }
 
-                this.dayBox.SelectedIndex = date.Day - 1;
-                this.monthBox.SelectedIndex = date.Month;
-                this.yearBox.SelectedIndex = date.Year - DateTime.Now.Year;
+                this.month = value;
+
+                this.monthBox.SelectedIndex = value - 1;
             }
-        }*/
+        }
+
+        public int Year
+        {
+            get
+            {
+                return this.year;
+            }
+            set
+            {
+                this.year = value;
+
+                this.yearBox.Text = value.ToString();
+            }
+        }
+
+        public DateTime Date
+        {
+            get
+            {
+                return new DateTime(Year, Month, 1);
+            }
+            set
+            {
+                this.Month = value.Month;
+                this.Year = value.Year;
+            }
+        }
+
+        public IObserver Observer { get; set; }
 
         #endregion
 
@@ -43,7 +81,7 @@ namespace EasyCalendar.CalendarControls.Navigation
             InitializeComponent();
 
             PopulateYearBox();
-            //this.Date = DateTime.Now.Date;
+            this.Date = DateTime.Now.Date;
         }
 
         #region Overrides
@@ -52,7 +90,6 @@ namespace EasyCalendar.CalendarControls.Navigation
         {
             base.OnFontChanged(e);
 
-            this.dayBox.Font = this.Font;
             this.monthBox.Font = this.Font;
             this.yearBox.Font = this.Font;
         }
@@ -71,29 +108,13 @@ namespace EasyCalendar.CalendarControls.Navigation
             }
         }
 
-        private bool ValidateDay(ref int day)
-        {
-            if (!int.TryParse(dayBox.Text, out day))
-                return false;
-
-            for (int i = 0; i < dayBox.Items.Count; i++)
-            {
-                if (day == int.Parse(dayBox.Items[i].ToString()))
-                    return true;
-            }
-
-            MessageBox.Show("The entered day is either invalid or it is out of bounds!", "Invalid day", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            return false;
-        }
-
         private bool ValidateMonth(ref int month)
         {
             for (int i = 0; i < monthBox.Items.Count; i++)
             {
                 if (monthBox.Items[i].ToString() == monthBox.Text)
                 {
-                    month = i;
+                    month = i+1;
                     break;
                 }
             }
@@ -108,20 +129,17 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         private bool ValidateYear(ref int year)
         {
-            if (!int.TryParse(dayBox.Text, out year))
+            if (!int.TryParse(yearBox.Text, out year))
                 return false;
 
             return true;
         }
 
-        private bool ValidateDateBoxes(out int day, out int month, out int year)
+        private bool ValidateDateBoxes(out int month, out int year)
         {
-            day = month = year = -1;
+            month = year = -1;
 
-            if (dayBox.Text == string.Empty || monthBox.Text == string.Empty || yearBox.Text == string.Empty)
-                return false;
-
-            if (!ValidateDay(ref day))
+            if (monthBox.Text == string.Empty || yearBox.Text == string.Empty)
                 return false;
 
             if (!ValidateMonth(ref month))
@@ -130,21 +148,30 @@ namespace EasyCalendar.CalendarControls.Navigation
             if (!ValidateYear(ref year))
                 return false;
 
+            // Check for end of year or start of year navigations
+            if (month > 12)
+            {
+                month = 1;
+                year++;
+            }
+            else if (month < 1)
+            {
+                month = 1;
+                year--;
+            }
+
             return true;
         }
 
         private void ParseDate()
         {
-            int day;
+            // Parse the date
+            int day = 1;
             int month;
             int year;
 
-            if (!ValidateDateBoxes(out day, out month, out year))
+            if (!ValidateDateBoxes(out month, out year))
                 return;
-
-            //var day = dayBox.SelectedIndex + 1;
-            //var month = monthBox.SelectedIndex;
-            //var year = yearBox.SelectedIndex + DateTime.Now.Year;
 
             var date = new DateTime(year, month, day);
 
@@ -154,23 +181,32 @@ namespace EasyCalendar.CalendarControls.Navigation
             }
             else
             {
-                //this.Date = date;
+                this.Date = date;
             }
+
+            // Update the observer
+            Observer?.UpdateData();
         }
 
         #endregion
 
-        private void dayBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void DateBoxes_SelectedIndexChanged(object sender, EventArgs e)
         {
             ParseDate();
         }
 
-        private void dayBox_KeyDown(object sender, KeyEventArgs e)
+        private void DateBoxes_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter)
                 return;
 
             ParseDate();
+        }
+
+        private void DatePicker_Load(object sender, EventArgs e)
+        {
+            //monthBox.SelectedIndexChanged += DateBoxes_SelectedIndexChanged;
+            //yearBox.SelectedIndexChanged += DateBoxes_SelectedIndexChanged;
         }
     }
 }

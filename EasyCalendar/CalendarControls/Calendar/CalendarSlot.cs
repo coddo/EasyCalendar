@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.CalendarControls.Calendar
@@ -13,6 +14,8 @@ namespace EasyCalendar.CalendarControls.Calendar
         private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
         private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";
 
+        private DateTime date;
+
         #endregion
 
         public CalendarSlot()
@@ -21,6 +24,8 @@ namespace EasyCalendar.CalendarControls.Calendar
 
             this.BackColor = SLOT_COLOR;
             dateLabel.ForeColor = TEXT_COLOR;
+
+            date = DateTime.Now;
         }
 
         #region Methods
@@ -28,7 +33,10 @@ namespace EasyCalendar.CalendarControls.Calendar
         private void RenderDateLabel()
         {
             // Render the format of the date
-            //
+            if (this.Width * 7 < 1000)
+                this.dateLabel.Text = date.ToString(DATE_FORMAT_SHORT);
+            else
+                this.dateLabel.Text = date.ToString(DATE_FORMAT_LONG);
 
             // Reposition the label
             this.dateLabel.Left = this.Width / 2 - this.dateLabel.Width / 2;

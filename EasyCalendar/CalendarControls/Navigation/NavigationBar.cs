@@ -10,15 +10,19 @@ namespace EasyCalendar.CalendarControls.Navigation
     {
         #region Constants
 
-        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#ea902d");
+        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#EA902D");
 
         public const int FLOW_HEIGHT = 30;
 
         #endregion
 
-        #region Fields
+        #region Properties
 
-        private CalendarControl parent;
+        private new CalendarControl Parent { get; set; }
+
+        public DatePicker DatePicker => this.datePicker;
+
+        public DateTime Date => datePicker.Date;
 
         #endregion
 
@@ -29,23 +33,8 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         public NavigationBar(CalendarControl parent) : this()
         {
-            this.parent = parent;
+            this.Parent = parent;
         }
-
-        #region Overrides
-
-        /*protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            var rect = this.ClientRectangle;
-            var pen = new Pen(CalendarSlot.TEXT_COLOR, 3);
-
-            e.Graphics.DrawRectangle(pen, rect);
-
-        }*/
-
-        #endregion
 
         #region Methods
 
@@ -74,12 +63,12 @@ namespace EasyCalendar.CalendarControls.Navigation
 
         private void nextButton_Click(object sender, System.EventArgs e)
         {
-
+            datePicker.Date = datePicker.Date.AddMonths(1);
         }
 
         private void previousButton_Click(object sender, System.EventArgs e)
         {
-
+            datePicker.Date = datePicker.Date.AddMonths(-1);
         }
 
         private void NavigationBar_MouseEnterAnimate(object sender, System.EventArgs e)

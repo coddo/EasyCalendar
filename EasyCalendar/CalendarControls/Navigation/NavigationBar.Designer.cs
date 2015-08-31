@@ -30,7 +30,7 @@
         {
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.datePicker1 = new EasyCalendar.CalendarControls.Navigation.DatePicker();
+            this.datePicker = new EasyCalendar.CalendarControls.Navigation.DatePicker();
             this.SuspendLayout();
             // 
             // previousButton
@@ -42,7 +42,7 @@
             this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Location = new System.Drawing.Point(18, 13);
+            this.previousButton.Location = new System.Drawing.Point(21, 13);
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(50, 50);
             this.previousButton.TabIndex = 2;
@@ -58,33 +58,39 @@
             this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(371, 13);
+            this.nextButton.Location = new System.Drawing.Point(310, 13);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(50, 50);
             this.nextButton.TabIndex = 1;
             this.nextButton.UseVisualStyleBackColor = false;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // datePicker1
+            // datePicker
             // 
-            this.datePicker1.BackColor = System.Drawing.Color.Transparent;
-            this.datePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.datePicker1.Location = new System.Drawing.Point(75, 16);
-            this.datePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.datePicker1.Name = "datePicker1";
-            this.datePicker1.Size = new System.Drawing.Size(289, 44);
-            this.datePicker1.TabIndex = 3;
+            this.datePicker.BackColor = System.Drawing.Color.Transparent;
+            this.datePicker.Date = new System.DateTime(2015, 8, 1, 0, 0, 0, 0);
+            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.datePicker.Location = new System.Drawing.Point(78, 18);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.datePicker.MaximumSize = new System.Drawing.Size(225, 44);
+            this.datePicker.Month = 8;
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Observer = null;
+            this.datePicker.Size = new System.Drawing.Size(225, 44);
+            this.datePicker.TabIndex = 3;
+            this.datePicker.Year = 2015;
             // 
             // NavigationBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.datePicker1);
+            this.Controls.Add(this.datePicker);
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
+            this.MaximumSize = new System.Drawing.Size(381, 78);
             this.Name = "NavigationBar";
-            this.Size = new System.Drawing.Size(449, 78);
+            this.Size = new System.Drawing.Size(381, 78);
             this.Load += new System.EventHandler(this.NavigationBar_Load);
             this.MouseEnter += new System.EventHandler(this.NavigationBar_MouseEnterAnimate);
             this.MouseLeave += new System.EventHandler(this.NavigationBar_MouseLeaveAnimate);
@@ -95,6 +101,6 @@
         #endregion
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button previousButton;
-        private DatePicker datePicker1;
+        private DatePicker datePicker;
     }
 }

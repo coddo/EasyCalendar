@@ -28,53 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dayBox = new System.Windows.Forms.ComboBox();
             this.monthBox = new System.Windows.Forms.ComboBox();
             this.yearBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // dayBox
-            // 
-            this.dayBox.FormattingEnabled = true;
-            this.dayBox.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.dayBox.Location = new System.Drawing.Point(4, 4);
-            this.dayBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dayBox.Name = "dayBox";
-            this.dayBox.Size = new System.Drawing.Size(53, 33);
-            this.dayBox.TabIndex = 0;
-            this.dayBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
-            this.dayBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
             // 
             // monthBox
             // 
@@ -90,25 +46,26 @@
             "August",
             "September",
             "October",
-            "November"});
-            this.monthBox.Location = new System.Drawing.Point(67, 4);
-            this.monthBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            "November",
+            "December"});
+            this.monthBox.Location = new System.Drawing.Point(4, 4);
+            this.monthBox.Margin = new System.Windows.Forms.Padding(4);
             this.monthBox.Name = "monthBox";
             this.monthBox.Size = new System.Drawing.Size(132, 33);
             this.monthBox.TabIndex = 1;
-            this.monthBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
-            this.monthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
+            this.monthBox.SelectedIndexChanged += new System.EventHandler(this.DateBoxes_SelectedIndexChanged);
+            this.monthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateBoxes_KeyDown);
             // 
             // yearBox
             // 
             this.yearBox.FormattingEnabled = true;
-            this.yearBox.Location = new System.Drawing.Point(208, 4);
-            this.yearBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.yearBox.Location = new System.Drawing.Point(145, 4);
+            this.yearBox.Margin = new System.Windows.Forms.Padding(4);
             this.yearBox.Name = "yearBox";
             this.yearBox.Size = new System.Drawing.Size(75, 33);
             this.yearBox.TabIndex = 2;
-            this.yearBox.SelectedIndexChanged += new System.EventHandler(this.dayBox_SelectedIndexChanged);
-            this.yearBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dayBox_KeyDown);
+            this.yearBox.SelectedIndexChanged += new System.EventHandler(this.DateBoxes_SelectedIndexChanged);
+            this.yearBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateBoxes_KeyDown);
             // 
             // DatePicker
             // 
@@ -117,18 +74,16 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.yearBox);
             this.Controls.Add(this.monthBox);
-            this.Controls.Add(this.dayBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DatePicker";
-            this.Size = new System.Drawing.Size(292, 44);
+            this.Size = new System.Drawing.Size(225, 43);
+            this.Load += new System.EventHandler(this.DatePicker_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox dayBox;
         private System.Windows.Forms.ComboBox monthBox;
         private System.Windows.Forms.ComboBox yearBox;
     }

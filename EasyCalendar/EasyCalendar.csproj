@@ -91,6 +91,8 @@
     <Compile Include="CalendarControls\Calendar\CalendarControl.Designer.cs">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalendarControls\IObservable.cs" />
+    <Compile Include="CalendarControls\IObserver.cs" />
     <Compile Include="CalendarControls\Navigation\DatePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
