@@ -8,11 +8,14 @@ namespace EasyCalendar.Controls.Calendar
     {
         #region Constants
 
-        public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#4D4D4D");
-        public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#EFAE12");
+        private const int MAX_WIDTH_FOR_DATE_RESIZE = 1350;
 
         private static readonly string DATE_FORMAT_LONG = "d MMMM yyyy";
         private static readonly string DATE_FORMAT_SHORT = "d/MM/yyyy";
+
+        public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#272728");
+        public static readonly Color DATE_TEXT_COLOR = ColorTranslator.FromHtml("#CC9056");
+        public static readonly Color DAYOFWEEK_TEXT_COLOR = ColorTranslator.FromHtml("#DAD5CB");
 
         private DateTime date;
 
@@ -38,11 +41,11 @@ namespace EasyCalendar.Controls.Calendar
         {
             get
             {
-                return weekDayLabel.Text;
+                return dayOfWeekLabel.Text;
             }
             set
             {
-                weekDayLabel.Text = value;
+                dayOfWeekLabel.Text = value;
             }
         }
 
@@ -53,9 +56,10 @@ namespace EasyCalendar.Controls.Calendar
             InitializeComponent();
 
             this.BackColor = SLOT_COLOR;
-            this.dateLabel.ForeColor = TEXT_COLOR;
+            this.dateLabel.ForeColor = DATE_TEXT_COLOR;
+            this.dayOfWeekLabel.ForeColor = DAYOFWEEK_TEXT_COLOR;
             this.addEvent.FlatAppearance.MouseDownBackColor = CalendarControl.CALENDAR_CONTROL_COLOR;
-            this.addEvent.FlatAppearance.MouseOverBackColor = TEXT_COLOR;
+            this.addEvent.FlatAppearance.MouseOverBackColor = DATE_TEXT_COLOR;
         }
 
         #region Methods
@@ -63,10 +67,10 @@ namespace EasyCalendar.Controls.Calendar
         private void RenderDateLabel()
         {
             // Render the format of the date
-            if (this.Width * 7 < 1000)
+            if (this.Width * CalendarControl.COLUMNS < MAX_WIDTH_FOR_DATE_RESIZE)
                 this.dateLabel.Text = date.ToString(DATE_FORMAT_SHORT);
             else
-                this.dateLabel.Text = date.ToString(DATE_FORMAT_LONG);
+                this.dateLabel.Text = date.ToString(DATE_FORMAT_LONG).ToUpper();
 
             // Reposition the label
             this.dateLabel.Left = this.Width / 2 - this.dateLabel.Width / 2;

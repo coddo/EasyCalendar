@@ -10,7 +10,7 @@ namespace EasyCalendar.Controls.Navigation
     {
         #region Constants
 
-        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#EA902D");
+        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#95B5BB");
 
         public const int FLOW_HEIGHT = 30;
 

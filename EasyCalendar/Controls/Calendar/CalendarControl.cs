@@ -9,7 +9,10 @@ namespace EasyCalendar.Controls.Calendar
     {
         #region Constants
 
-        public static readonly Color CALENDAR_CONTROL_COLOR = ColorTranslator.FromHtml("#D8852A");
+        public const int ROWS = 6;
+        public const int COLUMNS = 7;
+
+        public static readonly Color CALENDAR_CONTROL_COLOR = ColorTranslator.FromHtml("#5D797D");
 
         #endregion
 
@@ -37,14 +40,14 @@ namespace EasyCalendar.Controls.Calendar
             
             int index = (int)date.DayOfWeek - 1;
             if (index < 0) // Sunday
-                index = 6;
+                index = COLUMNS - 1;
 
             date = date.AddDays(-index);
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i < ROWS; i++)
             {
-                for (int j = 0; j < 7; j++, addition++)
+                for (int j = 0; j < COLUMNS; j++, addition++)
                 {
-                    slots[i * 7 + j].Date = date.AddDays(addition);
+                    slots[i * COLUMNS + j].Date = date.AddDays(addition);
                 }
             }
 
@@ -56,9 +59,9 @@ namespace EasyCalendar.Controls.Calendar
 
         private void CreateCalendarSlots()
         {
-            for (int row = 0; row < 6; row++)
+            for (int row = 0; row < ROWS; row++)
             {
-                for (int column = 0; column < 7; column++)
+                for (int column = 0; column < COLUMNS; column++)
                 {
                     var slot = new CalendarSlot
                     {
@@ -71,7 +74,7 @@ namespace EasyCalendar.Controls.Calendar
             }
         }
 
-        private Size ComputeItemSize() => new Size(this.Width / 7 - 2, this.Height / 6 - 2);
+        private Size ComputeItemSize() => new Size(this.Width / COLUMNS - 2, this.Height / ROWS - 2);
 
         private void RenderSlots()
         {
@@ -79,11 +82,11 @@ namespace EasyCalendar.Controls.Calendar
             Size size = ComputeItemSize();
 
             // Resize and relocate items
-            for (int row = 0; row < 6; row++)
+            for (int row = 0; row < ROWS; row++)
             {
-                for (int column = 0; column < 7; column++)
+                for (int column = 0; column < COLUMNS; column++)
                 {
-                    var slot = slots[row * 7 + column];
+                    var slot = slots[row * COLUMNS + column];
 
                     slot.Left = 2 + column * size.Width + 2 * column;
                     slot.Top = 3 + row * size.Height + 2 * row;
@@ -102,7 +105,7 @@ namespace EasyCalendar.Controls.Calendar
                 case 3: return "THU";
                 case 4: return "FRI";
                 case 5: return "SAT";
-                case 6: return "SUN";
+                case ROWS: return "SUN";
             }
 
             return "";

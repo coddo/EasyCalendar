@@ -34,6 +34,7 @@
             // 
             // monthBox
             // 
+            this.monthBox.Font = new System.Drawing.Font("Mixolydian Titling", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthBox.FormattingEnabled = true;
             this.monthBox.Items.AddRange(new object[] {
             "January",
@@ -51,18 +52,19 @@
             this.monthBox.Location = new System.Drawing.Point(4, 4);
             this.monthBox.Margin = new System.Windows.Forms.Padding(4);
             this.monthBox.Name = "monthBox";
-            this.monthBox.Size = new System.Drawing.Size(132, 33);
+            this.monthBox.Size = new System.Drawing.Size(132, 32);
             this.monthBox.TabIndex = 1;
             this.monthBox.SelectedIndexChanged += new System.EventHandler(this.DateBoxes_SelectedIndexChanged);
             this.monthBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateBoxes_KeyDown);
             // 
             // yearBox
             // 
+            this.yearBox.Font = new System.Drawing.Font("Mixolydian Titling", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearBox.FormattingEnabled = true;
             this.yearBox.Location = new System.Drawing.Point(145, 4);
             this.yearBox.Margin = new System.Windows.Forms.Padding(4);
             this.yearBox.Name = "yearBox";
-            this.yearBox.Size = new System.Drawing.Size(75, 33);
+            this.yearBox.Size = new System.Drawing.Size(75, 32);
             this.yearBox.TabIndex = 2;
             this.yearBox.SelectedIndexChanged += new System.EventHandler(this.DateBoxes_SelectedIndexChanged);
             this.yearBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateBoxes_KeyDown);
