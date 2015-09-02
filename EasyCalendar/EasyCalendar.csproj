@@ -109,8 +109,12 @@
     <Compile Include="CalendarControls\Navigation\NavigationBar.Designer.cs">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Database.cs" />
+    <Compile Include="DAL\Context\DatabaseContext.cs" />
+    <Compile Include="DAL\Context\DatabaseInitializer.cs" />
+    <Compile Include="DAL\Initializers\EventsContextInitializer.cs" />
+    <Compile Include="DAL\Initializers\EventsDataContextInitializer.cs" />
     <Compile Include="DAL\Models\Event.cs" />
+    <Compile Include="DAL\Models\EventData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
