@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyCalendar.DAL.Models
 {
     [Table("event")]
-    public class EventData
+    public class EventData : BaseEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column("id")]
-        public Guid Id { get; set; }
-
         [Column("Title")]
         public string Title { get; set; }
 
@@ -25,7 +19,6 @@ namespace EasyCalendar.DAL.Models
         [Column("recursionDays")]
         public int? RecursionDays { get; set; }
 
-        //[OneToMany(CascadeOperations = CascadeOperation.All)]
         public Collection<Event> Events { get; set; }
     }
 }

@@ -113,8 +113,13 @@
     <Compile Include="DAL\Context\DatabaseInitializer.cs" />
     <Compile Include="DAL\Initializers\EventsContextInitializer.cs" />
     <Compile Include="DAL\Initializers\EventsDataContextInitializer.cs" />
+    <Compile Include="DAL\Models\BaseEntity.cs" />
     <Compile Include="DAL\Models\Event.cs" />
     <Compile Include="DAL\Models\EventData.cs" />
+    <Compile Include="DAL\Repositories\BaseRepository.cs" />
+    <Compile Include="DAL\Repositories\Events\EventsDataRepository.cs" />
+    <Compile Include="DAL\Repositories\Events\EventsRepository.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
