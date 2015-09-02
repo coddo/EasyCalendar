@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace EasyCalendar.CalendarControls.Navigation
+namespace EasyCalendar.Controls.Navigation
 {
     public partial class DatePicker : UserControl, IObservable
     {

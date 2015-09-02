@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace EasyCalendar.CalendarControls.Calendar
+namespace EasyCalendar.Controls.Calendar
 {
     public partial class CalendarSlot : UserControl
     {
@@ -18,14 +18,44 @@ namespace EasyCalendar.CalendarControls.Calendar
 
         #endregion
 
+        #region Properties
+
+        public DateTime Date
+        {
+            get
+            {
+                return this.date;
+            }
+            set
+            {
+                this.date = value;
+
+                RenderDateLabel();
+            }
+        }
+
+        public string DayOfWeek
+        {
+            get
+            {
+                return weekDayLabel.Text;
+            }
+            set
+            {
+                weekDayLabel.Text = value;
+            }
+        }
+
+        #endregion
+
         public CalendarSlot()
         {
             InitializeComponent();
 
             this.BackColor = SLOT_COLOR;
-            dateLabel.ForeColor = TEXT_COLOR;
-
-            date = DateTime.Now;
+            this.dateLabel.ForeColor = TEXT_COLOR;
+            this.addEvent.FlatAppearance.MouseDownBackColor = CalendarControl.CALENDAR_CONTROL_COLOR;
+            this.addEvent.FlatAppearance.MouseOverBackColor = TEXT_COLOR;
         }
 
         #region Methods
@@ -54,6 +84,11 @@ namespace EasyCalendar.CalendarControls.Calendar
         private void dateLabel_TextChanged(object sender, System.EventArgs e)
         {
             RenderDateLabel();
+        }
+
+        private void addEvent_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

@@ -63,6 +63,16 @@ namespace EasyCalendar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addEvent {
+            get {
+                object obj = ResourceManager.GetObject("addEvent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nearby {
             get {
                 object obj = ResourceManager.GetObject("nearby", resourceCulture);

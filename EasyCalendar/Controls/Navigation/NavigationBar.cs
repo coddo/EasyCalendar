@@ -1,10 +1,10 @@
-﻿using EasyCalendar.CalendarControls.Calendar;
+﻿using EasyCalendar.Controls.Calendar;
 using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace EasyCalendar.CalendarControls.Navigation
+namespace EasyCalendar.Controls.Navigation
 {
     public partial class NavigationBar : UserControl
     {

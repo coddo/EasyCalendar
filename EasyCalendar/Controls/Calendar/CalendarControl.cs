@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace EasyCalendar.CalendarControls.Calendar
+namespace EasyCalendar.Controls.Calendar
 {
     public partial class CalendarControl : UserControl, IObserver
     {
@@ -29,13 +29,41 @@ namespace EasyCalendar.CalendarControls.Calendar
 
         #region Methods
 
+        public void UpdateData()
+        {
+            var date = navigator.Date;
+            var addition = 0;
+
+            
+            int index = (int)date.DayOfWeek - 1;
+            if (index < 0) // Sunday
+                index = 6;
+
+            date = date.AddDays(-index);
+            for(int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++, addition++)
+                {
+                    slots[i * 7 + j].Date = date.AddDays(addition);
+                }
+            }
+
+        }
+
+        #endregion
+
+        #region Methods for UI
+
         private void CreateCalendarSlots()
         {
             for (int row = 0; row < 6; row++)
             {
                 for (int column = 0; column < 7; column++)
                 {
-                    var slot = new CalendarSlot();
+                    var slot = new CalendarSlot
+                    {
+                        DayOfWeek = ShortenedDayOfWeek(column)
+                    };
 
                     slots.Add(slot);
                     this.Controls.Add(slot);
@@ -64,9 +92,20 @@ namespace EasyCalendar.CalendarControls.Calendar
             }
         }
 
-        public void UpdateData()
+        private string ShortenedDayOfWeek(int slotColumn)
         {
-            
+            switch (slotColumn)
+            {
+                case 0: return "MON";
+                case 1: return "TUE";
+                case 2: return "WED";
+                case 3: return "THU";
+                case 4: return "FRI";
+                case 5: return "SAT";
+                case 6: return "SUN";
+            }
+
+            return "";
         }
 
         #endregion
@@ -90,6 +129,7 @@ namespace EasyCalendar.CalendarControls.Calendar
             this.BackColor = CALENDAR_CONTROL_COLOR;
 
             this.navigator.DatePicker.Observer = this;
+            this.navigator.DatePicker.Date = DateTime.Now;
         }
 
         #endregion

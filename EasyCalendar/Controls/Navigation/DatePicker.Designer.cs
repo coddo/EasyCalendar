@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.CalendarControls.Navigation
+﻿namespace EasyCalendar.Controls.Navigation
 {
     partial class DatePicker
     {

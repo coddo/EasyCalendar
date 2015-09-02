@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.CalendarControls.Calendar
+﻿namespace EasyCalendar.Controls.Calendar
 {
     partial class CalendarSlot
     {
@@ -30,6 +30,8 @@
         {
             this.dateLabel = new System.Windows.Forms.Label();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.weekDayLabel = new System.Windows.Forms.Label();
+            this.addEvent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dateLabel
@@ -52,11 +54,40 @@
             this.flowPanel.Size = new System.Drawing.Size(200, 147);
             this.flowPanel.TabIndex = 5;
             // 
+            // weekDayLabel
+            // 
+            this.weekDayLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.weekDayLabel.AutoSize = true;
+            this.weekDayLabel.Font = new System.Drawing.Font("Marta", 9F);
+            this.weekDayLabel.ForeColor = System.Drawing.Color.Black;
+            this.weekDayLabel.Location = new System.Drawing.Point(3, 151);
+            this.weekDayLabel.Name = "weekDayLabel";
+            this.weekDayLabel.Size = new System.Drawing.Size(36, 15);
+            this.weekDayLabel.TabIndex = 6;
+            this.weekDayLabel.Text = "MON";
+            // 
+            // addEvent
+            // 
+            this.addEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addEvent.BackColor = System.Drawing.Color.Transparent;
+            this.addEvent.BackgroundImage = global::EasyCalendar.Properties.Resources.addEvent;
+            this.addEvent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addEvent.FlatAppearance.BorderSize = 0;
+            this.addEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addEvent.Location = new System.Drawing.Point(171, 147);
+            this.addEvent.Name = "addEvent";
+            this.addEvent.Size = new System.Drawing.Size(26, 23);
+            this.addEvent.TabIndex = 7;
+            this.addEvent.UseVisualStyleBackColor = false;
+            this.addEvent.Click += new System.EventHandler(this.addEvent_Click);
+            // 
             // CalendarSlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.addEvent);
+            this.Controls.Add(this.weekDayLabel);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.flowPanel);
             this.Name = "CalendarSlot";
@@ -70,5 +101,7 @@
         #endregion
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
+        private System.Windows.Forms.Label weekDayLabel;
+        private System.Windows.Forms.Button addEvent;
     }
 }

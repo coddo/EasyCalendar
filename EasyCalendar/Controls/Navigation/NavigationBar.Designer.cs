@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.CalendarControls.Navigation
+﻿namespace EasyCalendar.Controls.Navigation
 {
     partial class NavigationBar
     {
@@ -30,7 +30,7 @@
         {
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.datePicker = new EasyCalendar.CalendarControls.Navigation.DatePicker();
+            this.datePicker = new EasyCalendar.Controls.Navigation.DatePicker();
             this.SuspendLayout();
             // 
             // previousButton
