@@ -36,6 +36,10 @@ namespace EasyCalendar.Controls.Navigation
             this.Parent = parent;
         }
 
+        #region Overrides
+
+        #endregion
+
         #region Methods
 
         private bool IsPointerOverChild()

@@ -14,6 +14,7 @@ namespace EasyCalendar.Controls.Calendar
         private static readonly string DATE_FORMAT_SHORT = "d/MM/yyyy";
 
         public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#272728");
+        public static readonly Color SLOT_COLOR_TODAY = ColorTranslator.FromHtml("#2C2D2F");
         public static readonly Color DATE_TEXT_COLOR = ColorTranslator.FromHtml("#CC9056");
         public static readonly Color DAYOFWEEK_TEXT_COLOR = ColorTranslator.FromHtml("#DAD5CB");
 
@@ -22,6 +23,21 @@ namespace EasyCalendar.Controls.Calendar
         #endregion
 
         #region Properties
+
+        private bool isToday;
+        public bool IsToday
+        {
+            get
+            {
+                return isToday;
+            }
+            set
+            {
+                isToday = value;
+
+                this.BackColor = isToday ? SLOT_COLOR : SLOT_COLOR_TODAY;
+            }
+        }
 
         public DateTime Date
         {

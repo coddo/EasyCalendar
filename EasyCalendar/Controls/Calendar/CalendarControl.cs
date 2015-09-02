@@ -36,7 +36,6 @@ namespace EasyCalendar.Controls.Calendar
         {
             var date = navigator.Date;
             var addition = 0;
-
             
             int index = (int)date.DayOfWeek - 1;
             if (index < 0) // Sunday
@@ -47,7 +46,10 @@ namespace EasyCalendar.Controls.Calendar
             {
                 for (int j = 0; j < COLUMNS; j++, addition++)
                 {
-                    slots[i * COLUMNS + j].Date = date.AddDays(addition);
+                    var newDate = date.AddDays(addition);
+
+                    slots[i * COLUMNS + j].Date = newDate;
+                    slots[i * COLUMNS + j].IsToday = DateTime.Today.Equals(newDate);
                 }
             }
 
