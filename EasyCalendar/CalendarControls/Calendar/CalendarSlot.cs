@@ -11,8 +11,8 @@ namespace EasyCalendar.CalendarControls.Calendar
         public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#4D4D4D");
         public static readonly Color TEXT_COLOR = ColorTranslator.FromHtml("#EFAE12");
 
-        private static readonly string DATE_FORMAT_LONG = "dd MMMM yyyy";
-        private static readonly string DATE_FORMAT_SHORT = "dd/MM/yyyy";
+        private static readonly string DATE_FORMAT_LONG = "d MMMM yyyy";
+        private static readonly string DATE_FORMAT_SHORT = "d/MM/yyyy";
 
         private DateTime date;
 

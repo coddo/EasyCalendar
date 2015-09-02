@@ -28,17 +28,6 @@ namespace EasyCalendar.CalendarControls.Navigation
             }
             set
             {
-                if (value > 12)
-                {
-                    value = 1;
-                    Year++;
-                }
-                else if (value < 1)
-                {
-                    value = 1;
-                    Year--;
-                }
-
                 this.month = value;
 
                 this.monthBox.SelectedIndex = value - 1;
@@ -147,18 +136,6 @@ namespace EasyCalendar.CalendarControls.Navigation
 
             if (!ValidateYear(ref year))
                 return false;
-
-            // Check for end of year or start of year navigations
-            if (month > 12)
-            {
-                month = 1;
-                year++;
-            }
-            else if (month < 1)
-            {
-                month = 1;
-                year--;
-            }
 
             return true;
         }

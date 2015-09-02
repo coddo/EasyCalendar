@@ -46,8 +46,8 @@ namespace EasyCalendar.CalendarControls.Navigation
             if (nextButton.ClientRectangle.Contains(nextButton.PointToClient(MousePosition)))
                 return true;
 
-            //if (datePicker.ClientRectangle.Contains(datePicker.PointToClient(MousePosition)))
-            //    return true;
+            if (datePicker.ClientRectangle.Contains(datePicker.PointToClient(MousePosition)))
+                return true;
 
             return false;
         }
