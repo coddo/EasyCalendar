@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyCalendar.DAL.Models
 {
-    [Table("event")]
+    [Table("EventsData")]
     public class EventData : BaseEntity
     {
         [Column("Title")]
@@ -12,10 +12,10 @@ namespace EasyCalendar.DAL.Models
         [Column("Details")]
         public string Details { get; set; }
 
-        [Column("isRecursive")]
+        [Column("IsRecursive")]
         public bool IsRecursive { get; set; }
 
-        [Column("recursionDays")]
+        [Column("RecursionDays")]
         public int? RecursionDays { get; set; }
 
         public Collection<Event> Events { get; set; }

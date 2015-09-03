@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyCalendar.DAL.Models
 {
+    [Table("Events")]
     public class Event : BaseEntity
     {
         [Column("Date")]

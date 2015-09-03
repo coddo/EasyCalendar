@@ -8,7 +8,7 @@ namespace EasyCalendar.DAL.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column("id")]
+        [Column("Id")]
         public Guid Id { get; set; }
     }
 }

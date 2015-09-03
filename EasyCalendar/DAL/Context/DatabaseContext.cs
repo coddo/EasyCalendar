@@ -7,12 +7,12 @@ namespace EasyCalendar.DAL.Context
 {
     public class DatabaseContext : DbContext
     {
-        public static readonly string DatabaseName = "Events.db";
+        public static readonly string DATABASE_NAME = "Events.db";
 
         protected internal DatabaseContext()
             : base(new SQLiteConnection() { ConnectionString =
                     new SQLiteConnectionStringBuilder()
-                        { DataSource = DatabaseName, ForeignKeys = true }
+                        { DataSource = DATABASE_NAME, ForeignKeys = true }
                     .ConnectionString }, true)
         {
             System.Data.Entity.Database.SetInitializer(new DatabaseInitializer());
