@@ -32,17 +32,17 @@ namespace EasyCalendar.Controls.Calendar
 
         #region Methods
 
-        public void UpdateData()
+        private void LoadDatesOntoCalendar()
         {
             var date = navigator.Date;
             var addition = 0;
-            
+
             int index = (int)date.DayOfWeek - 1;
             if (index < 0) // Sunday
                 index = COLUMNS - 1;
 
             date = date.AddDays(-index);
-            for(int i = 0; i < ROWS; i++)
+            for (int i = 0; i < ROWS; i++)
             {
                 for (int j = 0; j < COLUMNS; j++, addition++)
                 {
@@ -52,7 +52,17 @@ namespace EasyCalendar.Controls.Calendar
                     slots[i * COLUMNS + j].IsToday = DateTime.Today.Equals(newDate);
                 }
             }
+        }
 
+        private void LoadEvents()
+        {
+
+        }
+
+        public void UpdateUI()
+        {
+            LoadDatesOntoCalendar();
+            LoadEvents();
         }
 
         #endregion
@@ -67,7 +77,8 @@ namespace EasyCalendar.Controls.Calendar
                 {
                     var slot = new CalendarSlot
                     {
-                        DayOfWeek = ShortenedDayOfWeek(column)
+                        DayOfWeek = ShortenedDayOfWeek(column),
+                        Observer = this
                     };
 
                     slots.Add(slot);

@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        void UpdateData();
+        void UpdateUI();
     }
 }

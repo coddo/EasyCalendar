@@ -81,7 +81,6 @@
             this.MaximumSize = new System.Drawing.Size(239, 39);
             this.Name = "DatePicker";
             this.Size = new System.Drawing.Size(239, 39);
-            this.Load += new System.EventHandler(this.DatePicker_Load);
             this.ResumeLayout(false);
 
         }

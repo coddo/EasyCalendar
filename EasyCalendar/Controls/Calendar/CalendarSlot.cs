@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyCalendar.Forms;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,9 +23,16 @@ namespace EasyCalendar.Controls.Calendar
 
         #endregion
 
-        #region Properties
+        #region Fields
 
         private bool isToday;
+        
+        #endregion
+
+        #region Properties
+
+        public IObserver Observer { get; set; }
+
         public bool IsToday
         {
             get
@@ -108,7 +116,7 @@ namespace EasyCalendar.Controls.Calendar
 
         private void addEvent_Click(object sender, EventArgs e)
         {
-
+            new CreateEventForm(this.date, Observer).ShowDialog();
         }
 
         #endregion

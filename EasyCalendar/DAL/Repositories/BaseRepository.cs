@@ -61,6 +61,22 @@ namespace EasyCalendar.DAL.Repositories
             return Save() ? _dbSet.Find(obj.Id) : null;
         }
 
+        public T[] InsertAll(T[] objs)
+        {
+            if (objs == null || objs.Length == 0)
+                return null;
+
+            for(int i=0; i < objs.Length; i++)
+            {
+                if (objs[i].Id.Equals(Guid.Empty))
+                    objs[i].Id = Guid.NewGuid();
+            }
+
+            _dbSet.AddRange(objs);
+
+            return Save() ? objs : null;
+        }
+
         public T Update(T obj)
         {
             if (obj == null)

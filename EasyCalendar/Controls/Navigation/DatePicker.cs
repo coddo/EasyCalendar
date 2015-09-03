@@ -7,7 +7,7 @@ namespace EasyCalendar.Controls.Navigation
     {
         #region Constants
 
-        private const int maxYearAddition = 100;
+        public const int MAX_YEARS_DISPLAYED = 100;
 
         #endregion
 
@@ -91,7 +91,7 @@ namespace EasyCalendar.Controls.Navigation
         {
             int startYear = DateTime.Now.Year;
 
-            for (int year = startYear; year < startYear + maxYearAddition; year++)
+            for (int year = startYear; year < startYear + MAX_YEARS_DISPLAYED; year++)
             {
                 yearBox.Items.Add(year);
             }
@@ -162,7 +162,7 @@ namespace EasyCalendar.Controls.Navigation
             }
 
             // Update the observer
-            Observer?.UpdateData();
+            Observer?.UpdateUI();
         }
 
         #endregion
@@ -178,12 +178,6 @@ namespace EasyCalendar.Controls.Navigation
                 return;
 
             ParseDate();
-        }
-
-        private void DatePicker_Load(object sender, EventArgs e)
-        {
-            //monthBox.SelectedIndexChanged += DateBoxes_SelectedIndexChanged;
-            //yearBox.SelectedIndexChanged += DateBoxes_SelectedIndexChanged;
         }
     }
 }
