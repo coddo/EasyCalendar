@@ -1,4 +1,6 @@
-﻿using EasyCalendar.Forms;
+﻿using EasyCalendar.DAL;
+using EasyCalendar.DAL.Models;
+using EasyCalendar.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -26,7 +28,7 @@ namespace EasyCalendar.Controls.Calendar
         #region Fields
 
         private bool isToday;
-        
+
         #endregion
 
         #region Properties
@@ -87,6 +89,19 @@ namespace EasyCalendar.Controls.Calendar
         }
 
         #region Methods
+
+        public void LoadEventsForDate(DateTime date)
+        {
+            this.flowPanel.Controls.Clear();
+
+            using (var db = new UnitOfWork())
+            {
+                var events = db.EventsRepository.GetEventsForDate(date);
+
+                foreach (Event ev in events)
+                    this.flowPanel.Controls.Add(new CalendarEventItem(ev));
+            }
+        }
 
         private void RenderDateLabel()
         {

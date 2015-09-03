@@ -112,6 +112,18 @@ namespace EasyCalendar.Forms
             }
         }
 
+        private void ClearUserInput()
+        {
+            titleBox.Clear();
+            descriptionBox.Clear();
+            repeatDaysBox.Clear();
+            repeatMonthsBox.Clear();
+            repeatYearsBox.Clear();
+
+            repeatCheckBox.Checked = false;
+            datePicker.Value = DateTime.Today;
+        }
+
         private void repeatCheckBox_CheckedChanged(object sender, System.EventArgs e)
         {
             repeatPanel.Visible = repeatCheckBox.Checked;
@@ -139,6 +151,7 @@ namespace EasyCalendar.Forms
             }
 
             observer?.UpdateUI();
+            ClearUserInput();
         }
     }
 }

@@ -50,19 +50,15 @@ namespace EasyCalendar.Controls.Calendar
 
                     slots[i * COLUMNS + j].Date = newDate;
                     slots[i * COLUMNS + j].IsToday = DateTime.Today.Equals(newDate);
+
+                    slots[i * COLUMNS + j].LoadEventsForDate(newDate);
                 }
             }
-        }
-
-        private void LoadEvents()
-        {
-
         }
 
         public void UpdateUI()
         {
             LoadDatesOntoCalendar();
-            LoadEvents();
         }
 
         #endregion

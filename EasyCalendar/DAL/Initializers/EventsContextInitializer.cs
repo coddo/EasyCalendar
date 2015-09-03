@@ -17,7 +17,7 @@ namespace EasyCalendar.DAL.Initializers
                 .HasRequired(p => p.EventData)
                 .WithMany(p => p.Events)
                 .Map(m => m.MapKey("EventDataId"))
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
         }
     }
 }
