@@ -2,7 +2,6 @@
 using EasyCalendar.Controls.Navigation;
 using EasyCalendar.DAL;
 using EasyCalendar.DAL.Models;
-using EasyCalendar.DAL.Repositories.Events;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -90,25 +89,41 @@ namespace EasyCalendar.Forms
             }
         }
 
-        private Event[] CreateEvents(EventData eventData)
+        private bool CreateEvents(EventData eventData)
         {
+            if (eventData.IsRecursive)
+            {
             var startDate = datePicker.Value;
-            var endDate = startDate.AddYears(DatePicker.MAX_YEARS_DISPLAYED);
+                var endDate = startDate.AddYears(DatePicker.MAX_YEARS_DISPLAYED);
+                List<Event> eventsList = new List<Event>();
 
-            List<Event> eventsList = new List<Event>();
-            for (DateTime i = startDate; i <= endDate; i = i.AddDays((double)eventData.RecursionDays))
-            {
-                eventsList.Add(new Event
+                for (DateTime i = startDate; i <= endDate; i = i.AddDays((double)eventData.RecursionDays))
                 {
-                    EventData = eventData,
-                    Date = i,
-                });
-            }
+                    eventsList.Add(new Event
+                    {
+                        EventData = eventData,
+                        Date = i,
+                    });
+                }
 
-            var events = eventsList.ToArray();
-            using (var db = new UnitOfWork())
+                var events = eventsList.ToArray();
+                using (var db = new UnitOfWork())
+                {
+                    return db.EventsRepository.InsertAll(events) != null;
+                }
+            }
+            else
             {
-                return db.EventsRepository.InsertAll(events);
+                using (var db = new UnitOfWork())
+                {
+                    var ev = new Event
+                    {
+                        Date = datePicker.Value,
+                        EventData = db.EventsDataRepository.Get(eventData.Id)
+                    };
+
+                    return db.EventsRepository.Insert(ev) != null;
+                }
             }
         }
 
@@ -136,17 +151,24 @@ namespace EasyCalendar.Forms
 
             var eventData = CreateEventData();
 
-            if (eventData == null || eventData.Id == Guid.Empty)
+            if (eventData == null || eventData.Id == Guid.Empty.ToString())
             {
                 MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var events = CreateEvents(eventData);
+            var eventsCreated = CreateEvents(eventData);
 
-            if (events == null || events.Length == 0)
+            if (!eventsCreated)
             {
                 MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Rollback created EventData item
+                using(var db = new UnitOfWork())
+                {
+                    db.EventsDataRepository.Delete(eventData.Id);
+                }
+
                 return;
             }
 
