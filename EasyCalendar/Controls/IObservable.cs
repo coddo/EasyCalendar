@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.CalendarControls
+﻿namespace EasyCalendar.Controls
 {
     public interface IObservable
     {

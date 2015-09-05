@@ -2,7 +2,11 @@
 
 namespace EasyCalendar.DAL.Context
 {
-    internal class DatabaseInitializer : CreateDatabaseIfNotExists<DatabaseContext>
+    public class DatabaseInitializer : CreateDatabaseIfNotExists<DatabaseContext>
     {
+        protected override void Seed(DatabaseContext context)
+        {
+            base.Seed(context);
+        }
     }
 }

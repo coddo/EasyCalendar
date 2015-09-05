@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyCalendar.DAL.Models
@@ -8,7 +7,7 @@ namespace EasyCalendar.DAL.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column("id")]
-        public Guid Id { get; set; }
+        [Column("Id")]
+        public string Id { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using EasyCalendar.DAL.Context;
 using EasyCalendar.DAL.Models;
+using System;
+using System.Linq;
 
 namespace EasyCalendar.DAL.Repositories.Events
 {
@@ -8,6 +10,11 @@ namespace EasyCalendar.DAL.Repositories.Events
         internal EventsRepository(DatabaseContext context)
             : base(context)
         {
+        }
+
+        public Event[] GetEventsForDate(DateTime date)
+        {
+            return _dbSet.Where(e => e.Date == date).ToArray();
         }
     }
 }

@@ -83,59 +83,83 @@
     <Compile Include="App\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalendarControls\Calendar\CalendarSlot.cs">
+    <Compile Include="Controls\Calendar\CalendarSlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarControls\Calendar\CalendarSlot.Designer.cs">
+    <Compile Include="Controls\Calendar\CalendarSlot.Designer.cs">
       <DependentUpon>CalendarSlot.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalendarControls\Calendar\CalendarControl.cs">
+    <Compile Include="Controls\Calendar\CalendarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarControls\Calendar\CalendarControl.Designer.cs">
+    <Compile Include="Controls\Calendar\CalendarControl.Designer.cs">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalendarControls\IObservable.cs" />
-    <Compile Include="CalendarControls\IObserver.cs" />
-    <Compile Include="CalendarControls\Navigation\DatePicker.cs">
+    <Compile Include="Controls\Calendar\CalendarEventItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Calendar\CalendarEventItem.Designer.cs">
+      <DependentUpon>CalendarEventItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IObservable.cs" />
+    <Compile Include="Controls\IObserver.cs" />
+    <Compile Include="Controls\Navigation\DatePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarControls\Navigation\DatePicker.Designer.cs">
+    <Compile Include="Controls\Navigation\DatePicker.Designer.cs">
       <DependentUpon>DatePicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalendarControls\Navigation\NavigationBar.cs">
+    <Compile Include="Controls\Navigation\NavigationBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarControls\Navigation\NavigationBar.Designer.cs">
+    <Compile Include="Controls\Navigation\NavigationBar.Designer.cs">
       <DependentUpon>NavigationBar.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\Context\DatabaseContext.cs" />
     <Compile Include="DAL\Context\DatabaseInitializer.cs" />
     <Compile Include="DAL\Initializers\EventsContextInitializer.cs" />
-    <Compile Include="DAL\Initializers\EventsDataContextInitializer.cs" />
     <Compile Include="DAL\Models\BaseEntity.cs" />
     <Compile Include="DAL\Models\Event.cs" />
-    <Compile Include="DAL\Models\EventData.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
-    <Compile Include="DAL\Repositories\Events\EventsDataRepository.cs" />
     <Compile Include="DAL\Repositories\Events\EventsRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="Forms\CreateEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateEventForm.Designer.cs">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditEventForm.Designer.cs">
+      <DependentUpon>EditEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalendarControls\Calendar\CalendarControl.resx">
+    <EmbeddedResource Include="Controls\Calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalendarControls\Calendar\CalendarSlot.resx">
+    <EmbeddedResource Include="Controls\Calendar\CalendarSlot.resx">
       <DependentUpon>CalendarSlot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalendarControls\Navigation\DatePicker.resx">
+    <EmbeddedResource Include="Controls\Calendar\CalendarEventItem.resx">
+      <DependentUpon>CalendarEventItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Navigation\DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CalendarControls\Navigation\NavigationBar.resx">
+    <EmbeddedResource Include="Controls\Navigation\NavigationBar.resx">
       <DependentUpon>NavigationBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateEventForm.resx">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditEventForm.resx">
+      <DependentUpon>EditEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,6 +171,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Events.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,12 +201,14 @@
     <None Include="Resources\today.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\addEvent.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\next.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\previous.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

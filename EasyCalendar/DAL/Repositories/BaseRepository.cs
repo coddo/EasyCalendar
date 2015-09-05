@@ -2,6 +2,7 @@
 using EasyCalendar.DAL.Models;
 using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 
 namespace EasyCalendar.DAL.Repositories
@@ -28,8 +29,9 @@ namespace EasyCalendar.DAL.Repositories
                 return true;
             }
 
-            catch
+            catch(Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -38,7 +40,7 @@ namespace EasyCalendar.DAL.Repositories
 
         #region CRUD
 
-        public T Get(Guid id)
+        public T Get(string id)
         {
             return _dbSet.Find(id);
         }
@@ -53,12 +55,28 @@ namespace EasyCalendar.DAL.Repositories
             if (obj == null)
                 return null;
 
-            if (obj.Id.Equals(Guid.Empty))
-                obj.Id = Guid.NewGuid();
+            if (obj.Id == null || obj.Id == string.Empty || obj.Id == Guid.Empty.ToString())
+                obj.Id = Guid.NewGuid().ToString();
 
             _dbSet.Add(obj);
 
             return Save() ? _dbSet.Find(obj.Id) : null;
+        }
+
+        public T[] InsertAll(T[] objs)
+        {
+            if (objs == null || objs.Length == 0)
+                return null;
+
+            for(int i=0; i < objs.Length; i++)
+            {
+                if (objs[i].Id == null || objs[i].Id == string.Empty || objs[i].Id == Guid.Empty.ToString())
+                    objs[i].Id = Guid.NewGuid().ToString();
+            }
+
+            _dbSet.AddRange(objs);
+
+            return Save() ? objs : null;
         }
 
         public T Update(T obj)
@@ -72,7 +90,7 @@ namespace EasyCalendar.DAL.Repositories
             return Save() ? _dbSet.Find(obj.Id) : null;
         }
 
-        public bool Delete(Guid id)
+        public bool Delete(string id)
         {
             return Delete(_dbSet.Find(id));
         }

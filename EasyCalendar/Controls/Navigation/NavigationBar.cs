@@ -1,16 +1,16 @@
-﻿using EasyCalendar.CalendarControls.Calendar;
+﻿using EasyCalendar.Controls.Calendar;
 using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace EasyCalendar.CalendarControls.Navigation
+namespace EasyCalendar.Controls.Navigation
 {
     public partial class NavigationBar : UserControl
     {
         #region Constants
 
-        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#EA902D");
+        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#95B5BB");
 
         public const int FLOW_HEIGHT = 30;
 
@@ -35,6 +35,10 @@ namespace EasyCalendar.CalendarControls.Navigation
         {
             this.Parent = parent;
         }
+
+        #region Overrides
+
+        #endregion
 
         #region Methods
 

@@ -1,4 +1,4 @@
-﻿namespace EasyCalendar.CalendarControls.Navigation
+﻿namespace EasyCalendar.Controls.Navigation
 {
     partial class NavigationBar
     {
@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationBar));
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.datePicker = new EasyCalendar.CalendarControls.Navigation.DatePicker();
+            this.datePicker = new EasyCalendar.Controls.Navigation.DatePicker();
             this.SuspendLayout();
             // 
             // previousButton
             // 
             this.previousButton.BackColor = System.Drawing.Color.Transparent;
-            this.previousButton.BackgroundImage = global::EasyCalendar.Properties.Resources.previous;
+            this.previousButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousButton.BackgroundImage")));
             this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.previousButton.FlatAppearance.BorderSize = 0;
             this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Location = new System.Drawing.Point(21, 13);
+            this.previousButton.Location = new System.Drawing.Point(7, 6);
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(50, 50);
             this.previousButton.TabIndex = 2;
@@ -52,13 +53,13 @@
             // nextButton
             // 
             this.nextButton.BackColor = System.Drawing.Color.Transparent;
-            this.nextButton.BackgroundImage = global::EasyCalendar.Properties.Resources.next;
+            this.nextButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextButton.BackgroundImage")));
             this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextButton.FlatAppearance.BorderSize = 0;
             this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(310, 13);
+            this.nextButton.Location = new System.Drawing.Point(279, 6);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(50, 50);
             this.nextButton.TabIndex = 1;
@@ -69,14 +70,14 @@
             // 
             this.datePicker.BackColor = System.Drawing.Color.Transparent;
             this.datePicker.Date = new System.DateTime(2015, 8, 1, 0, 0, 0, 0);
-            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.datePicker.Location = new System.Drawing.Point(78, 18);
+            this.datePicker.Font = new System.Drawing.Font("Mixolydian Titling", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePicker.Location = new System.Drawing.Point(57, 12);
             this.datePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.datePicker.MaximumSize = new System.Drawing.Size(225, 44);
+            this.datePicker.MaximumSize = new System.Drawing.Size(239, 41);
             this.datePicker.Month = 8;
             this.datePicker.Name = "datePicker";
             this.datePicker.Observer = null;
-            this.datePicker.Size = new System.Drawing.Size(225, 44);
+            this.datePicker.Size = new System.Drawing.Size(222, 40);
             this.datePicker.TabIndex = 3;
             this.datePicker.Year = 2015;
             // 
@@ -88,9 +89,9 @@
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.previousButton);
             this.Controls.Add(this.nextButton);
-            this.MaximumSize = new System.Drawing.Size(381, 78);
+            this.MaximumSize = new System.Drawing.Size(336, 61);
             this.Name = "NavigationBar";
-            this.Size = new System.Drawing.Size(381, 78);
+            this.Size = new System.Drawing.Size(336, 61);
             this.Load += new System.EventHandler(this.NavigationBar_Load);
             this.MouseEnter += new System.EventHandler(this.NavigationBar_MouseEnterAnimate);
             this.MouseLeave += new System.EventHandler(this.NavigationBar_MouseLeaveAnimate);
