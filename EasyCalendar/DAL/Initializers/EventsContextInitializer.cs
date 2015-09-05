@@ -14,6 +14,9 @@ namespace EasyCalendar.DAL.Initializers
                 .Property(p => p.Date).IsRequired();
 
             builder.Entity<Event>()
+                .Property(p => p.Seen).IsRequired();
+
+            builder.Entity<Event>()
                 .HasRequired(p => p.EventData)
                 .WithMany(p => p.Events)
                 .Map(m => m.MapKey("EventDataId"))

@@ -2,6 +2,7 @@
 using EasyCalendar.DAL.Models;
 using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 
 namespace EasyCalendar.DAL.Repositories
@@ -30,6 +31,7 @@ namespace EasyCalendar.DAL.Repositories
 
             catch(Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
         }

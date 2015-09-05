@@ -7,7 +7,10 @@ namespace EasyCalendar.DAL.Models
     public class Event : BaseEntity
     {
         [Column("Date")]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
+
+        [Column("Seen")]
+        public bool Seen { get; set; } = false;
 
         public EventData EventData { get; set; }
     }

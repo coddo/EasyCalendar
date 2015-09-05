@@ -13,17 +13,17 @@ namespace EasyCalendar.DAL.Models
         public string Details { get; set; }
 
         [Column("IsRecursive")]
-        public bool IsRecursive { get; set; }
+        public bool IsRecursive { get; set; } = false;
 
         [Column("RecursionDays")]
-        public int? RecursionDays { get; set; }
+        public int? RecursionDays { get; set; } = 0;
 
         [Column("RecursionMonths")]
-        public int? RecursionMonths { get; set; }
+        public int? RecursionMonths { get; set; } = 0;
 
         [Column("RecursionYears")]
-        public int? RecursionYears { get; set; }
+        public int? RecursionYears { get; set; } = 0;
 
-        public Collection<Event> Events { get; set; }
+        public Collection<Event> Events { get; set; } = new Collection<Event>();
     }
 }
