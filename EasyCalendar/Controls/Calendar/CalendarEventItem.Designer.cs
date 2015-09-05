@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
+            // 
+            // toolTip
+            // 
+            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // CalendarEventItem
             // 
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FlatAppearance.BorderSize = 0;
-            this.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Size = new System.Drawing.Size(25, 25);
-            this.UseVisualStyleBackColor = false;
+            this.Leave += new System.EventHandler(this.CalendarEventItem_Leave);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EventItem_MouseClick);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

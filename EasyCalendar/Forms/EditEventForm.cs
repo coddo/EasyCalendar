@@ -15,14 +15,27 @@ namespace EasyCalendar.Forms
 
         #endregion
 
-        public EditEventForm(Event ev, DateTime date, IObserver observer) : base(date, observer)
+        public EditEventForm(Event ev, IObserver observer) : base(ev.Date, observer)
         {
             InitializeComponent();
 
             this.targetEvent = ev;
+
+            DisplayEventData();
         }
 
         #region Methods
+
+        private void DisplayEventData()
+        {
+            this.titleBox.Text = targetEvent.Title;
+            this.descriptionBox.Text = targetEvent.Details;
+            this.datePicker.Value = targetEvent.Date;
+            this.repeatCheckBox.Checked = targetEvent.IsRecursive;
+            this.repeatDaysBox.Text = targetEvent.RecursionDays.ToString();
+            this.repeatMonthsBox.Text = targetEvent.RecursionMonths.ToString();
+            this.repeatYearsBox.Text = targetEvent.RecursionYears.ToString();
+        }
 
         private Event UpdateEvent()
         {

@@ -13,8 +13,8 @@ namespace EasyCalendar.Controls.Calendar
 
         private const int MAX_WIDTH_FOR_DATE_RESIZE = 1350;
 
-        private static readonly string DATE_FORMAT_LONG = "d MMMM yyyy";
-        private static readonly string DATE_FORMAT_SHORT = "d/MM/yyyy";
+        public static readonly string DATE_FORMAT_LONG = "d MMMM yyyy";
+        public static readonly string DATE_FORMAT_SHORT = "d/MM/yyyy";
 
         public static readonly Color SLOT_COLOR = ColorTranslator.FromHtml("#272728");
         public static readonly Color SLOT_COLOR_TODAY = ColorTranslator.FromHtml("#2C2D2F");
@@ -60,6 +60,7 @@ namespace EasyCalendar.Controls.Calendar
                 this.date = value;
 
                 RenderDateLabel();
+                LoadEventsForDate(value);
             }
         }
 
@@ -99,7 +100,7 @@ namespace EasyCalendar.Controls.Calendar
                 var events = db.EventsRepository.GetEventsForDate(date);
 
                 foreach (Event ev in events)
-                    this.flowPanel.Controls.Add(new CalendarEventItem(ev));
+                    this.flowPanel.Controls.Add(new CalendarEventItem(ev, Observer));
             }
         }
 

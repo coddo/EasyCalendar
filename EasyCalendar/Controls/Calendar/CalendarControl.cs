@@ -63,7 +63,6 @@ namespace EasyCalendar.Controls.Calendar
                     slots[i * COLUMNS + j].Invoke((MethodInvoker)(() =>
                     {
                         slots[i * COLUMNS + j].Date = newDate;
-                        slots[i * COLUMNS + j].LoadEventsForDate(newDate);
                     }));
                 }
             }
