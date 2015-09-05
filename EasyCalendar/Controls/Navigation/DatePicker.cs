@@ -7,7 +7,7 @@ namespace EasyCalendar.Controls.Navigation
     {
         #region Constants
 
-        public const int MAX_YEARS_DISPLAYED = 100;
+        public const int MAX_YEARS_DISPLAYED = 50;
 
         #endregion
 

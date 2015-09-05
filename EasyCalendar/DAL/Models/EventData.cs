@@ -18,6 +18,12 @@ namespace EasyCalendar.DAL.Models
         [Column("RecursionDays")]
         public int? RecursionDays { get; set; }
 
+        [Column("RecursionMonths")]
+        public int? RecursionMonths { get; set; }
+
+        [Column("RecursionYears")]
+        public int? RecursionYears { get; set; }
+
         public Collection<Event> Events { get; set; }
     }
 }

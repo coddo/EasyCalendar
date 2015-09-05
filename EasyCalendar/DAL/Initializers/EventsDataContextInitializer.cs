@@ -23,6 +23,12 @@ namespace EasyCalendar.DAL.Initializers
                 .Property(p => p.RecursionDays).IsOptional();
 
             builder.Entity<EventData>()
+                .Property(p => p.RecursionMonths).IsOptional();
+
+            builder.Entity<EventData>()
+                .Property(p => p.RecursionYears).IsOptional();
+
+            builder.Entity<EventData>()
                 .HasMany(p => p.Events)
                 .WithRequired(p => p.EventData)
                 .WillCascadeOnDelete(true);

@@ -74,13 +74,9 @@ namespace EasyCalendar.Forms
 
             if (eventData.IsRecursive)
             {
-                var date = datePicker.Value;
-
-                date.AddDays(int.Parse(repeatDaysBox.Text));
-                date.AddMonths(int.Parse(repeatMonthsBox.Text));
-                date.AddYears(int.Parse(repeatYearsBox.Text));
-
-                eventData.RecursionDays = (int)(date - datePicker.Value).TotalDays;
+                eventData.RecursionDays = int.Parse(repeatDaysBox.Text);
+                eventData.RecursionMonths = int.Parse(repeatMonthsBox.Text);
+                eventData.RecursionYears = int.Parse(repeatYearsBox.Text);
             }
 
             using (var db = new UnitOfWork())
@@ -93,24 +89,27 @@ namespace EasyCalendar.Forms
         {
             if (eventData.IsRecursive)
             {
-            var startDate = datePicker.Value;
+                var startDate = datePicker.Value;
                 var endDate = startDate.AddYears(DatePicker.MAX_YEARS_DISPLAYED);
-                List<Event> eventsList = new List<Event>();
 
-                for (DateTime i = startDate; i <= endDate; i = i.AddDays((double)eventData.RecursionDays))
-                {
-                    eventsList.Add(new Event
-                    {
-                        EventData = eventData,
-                        Date = i,
-                    });
-                }
-
-                var events = eventsList.ToArray();
                 using (var db = new UnitOfWork())
                 {
-                    return db.EventsRepository.InsertAll(events) != null;
+                    eventData = db.EventsDataRepository.Get(eventData.Id);
+
+                    for (DateTime i = startDate; i <= endDate; i = i.AddDays((double)eventData.RecursionDays).AddMonths((int)eventData.RecursionMonths).AddYears((int)eventData.RecursionYears))
+                    {
+                        var ev = db.EventsRepository.Insert(new Event
+                        {
+                            EventData = eventData,
+                            Date = i
+                        });
+
+                        if (ev == null)
+                            return false;
+                    }
                 }
+
+                return true;
             }
             else
             {
@@ -131,12 +130,12 @@ namespace EasyCalendar.Forms
         {
             titleBox.Clear();
             descriptionBox.Clear();
-            repeatDaysBox.Clear();
-            repeatMonthsBox.Clear();
-            repeatYearsBox.Clear();
+
+            repeatDaysBox.Text = "0";
+            repeatMonthsBox.Text = "0";
+            repeatYearsBox.Text = "0";
 
             repeatCheckBox.Checked = false;
-            datePicker.Value = DateTime.Today;
         }
 
         private void repeatCheckBox_CheckedChanged(object sender, System.EventArgs e)
@@ -164,7 +163,7 @@ namespace EasyCalendar.Forms
                 MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 // Rollback created EventData item
-                using(var db = new UnitOfWork())
+                using (var db = new UnitOfWork())
                 {
                     db.EventsDataRepository.Delete(eventData.Id);
                 }

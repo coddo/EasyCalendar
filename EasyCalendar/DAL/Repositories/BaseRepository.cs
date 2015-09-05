@@ -28,7 +28,7 @@ namespace EasyCalendar.DAL.Repositories
                 return true;
             }
 
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
