@@ -7,6 +7,8 @@ namespace EasyCalendar.Controls.Calendar
     {
         private Event ev;
 
+        public Event Event => this.ev;
+
         public CalendarEventItem(Event ev)
         {
             InitializeComponent();

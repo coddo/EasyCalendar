@@ -8,7 +8,17 @@ namespace EasyCalendar.Forms
 {
     public partial class CreateEventForm : Form
     {
-        private IObserver observer;
+        #region Fields 
+
+        protected IObserver observer;
+
+        #endregion
+
+        [Obsolete("Designer only", true)]
+        public CreateEventForm()
+        {
+            InitializeComponent();
+        }
 
         public CreateEventForm(DateTime date, IObserver observer)
         {
@@ -18,10 +28,10 @@ namespace EasyCalendar.Forms
             this.observer = observer;
         }
 
-        private bool VerifyFields()
+        #region Methods
+
+        protected bool VerifyFields()
         {
-
-
             if (datePicker.Value < DateTime.Now)
             {
                 MessageBox.Show("The event date cannot be earlier than today!", "Bad date", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -85,7 +95,7 @@ namespace EasyCalendar.Forms
             }
         }
 
-        private void ClearUserInput()
+        protected void ClearUserInput()
         {
             titleBox.Clear();
             descriptionBox.Clear();
@@ -97,19 +107,23 @@ namespace EasyCalendar.Forms
             repeatCheckBox.Checked = false;
         }
 
+        #endregion
+
+        #region Event handlers
+
         private void repeatCheckBox_CheckedChanged(object sender, System.EventArgs e)
         {
             repeatPanel.Visible = repeatCheckBox.Checked;
         }
 
-        private void createEventButton_Click(object sender, EventArgs e)
+        protected virtual void performActionButton_Click(object sender, EventArgs e)
         {
             if (!VerifyFields())
                 return;
 
-            var eventData = CreateEvent();
+            var ev = CreateEvent();
 
-            if (eventData == null || eventData.Id == Guid.Empty.ToString())
+            if (ev == null || ev.Id == Guid.Empty.ToString())
             {
                 MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -118,5 +132,7 @@ namespace EasyCalendar.Forms
             observer?.UpdateUI();
             ClearUserInput();
         }
+
+        #endregion
     }
 }
