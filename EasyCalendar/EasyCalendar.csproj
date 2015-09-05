@@ -118,12 +118,9 @@
     <Compile Include="DAL\Context\DatabaseContext.cs" />
     <Compile Include="DAL\Context\DatabaseInitializer.cs" />
     <Compile Include="DAL\Initializers\EventsContextInitializer.cs" />
-    <Compile Include="DAL\Initializers\EventsDataContextInitializer.cs" />
     <Compile Include="DAL\Models\BaseEntity.cs" />
     <Compile Include="DAL\Models\Event.cs" />
-    <Compile Include="DAL\Models\EventData.cs" />
     <Compile Include="DAL\Repositories\BaseRepository.cs" />
-    <Compile Include="DAL\Repositories\Events\EventsDataRepository.cs" />
     <Compile Include="DAL\Repositories\Events\EventsRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Forms\CreateEventForm.cs">
@@ -166,7 +163,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Events.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

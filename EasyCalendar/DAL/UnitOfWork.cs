@@ -48,20 +48,11 @@ namespace EasyCalendar.DAL
 
         #region Repository fields
 
-        private EventsDataRepository _eventsDataRepository;
         private EventsRepository _eventsRepository;
 
         #endregion
 
         #region Repository Properties
-
-        public EventsDataRepository EventsDataRepository
-        {
-            get
-            {
-                return _eventsDataRepository ?? (_eventsDataRepository = new EventsDataRepository(_dbContext));
-            }
-        }
 
         public EventsRepository EventsRepository
         {

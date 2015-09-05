@@ -23,10 +23,7 @@ namespace EasyCalendar.DAL.Context
             base.OnModelCreating(modelBuilder);
 
             EventsContextInitializer.InitializeEventsContext(modelBuilder);
-            EventsDataContextInitializer.InitializeEventsDataContext(modelBuilder);
         }
-
-        public DbSet<EventData> EventsData { get; set; }
 
         public DbSet<Event> Events { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Calendar
@@ -22,12 +23,21 @@ namespace EasyCalendar.Controls.Calendar
 
         #endregion
 
+        #region Threads
+
+        private Thread rendererThread;
+
+        #endregion
+
         public CalendarControl()
         {
             InitializeComponent();
 
             // Generate calendar slots
             CreateCalendarSlots();
+
+            // Initialize UI rendering thread
+            rendererThread = new Thread(LoadDatesOntoCalendar);
         }
 
         #region Methods
@@ -48,17 +58,26 @@ namespace EasyCalendar.Controls.Calendar
                 {
                     var newDate = date.AddDays(addition);
 
-                    slots[i * COLUMNS + j].Date = newDate;
                     slots[i * COLUMNS + j].IsToday = DateTime.Today.Equals(newDate);
 
-                    slots[i * COLUMNS + j].LoadEventsForDate(newDate);
+                    slots[i * COLUMNS + j].Invoke((MethodInvoker)(() =>
+                    {
+                        slots[i * COLUMNS + j].Date = newDate;
+                        slots[i * COLUMNS + j].LoadEventsForDate(newDate);
+                    }));
                 }
             }
         }
 
         public void UpdateUI()
         {
-            LoadDatesOntoCalendar();
+            if (rendererThread.IsAlive)
+                rendererThread.Abort();
+
+            this.Refresh();
+
+            rendererThread = new Thread(LoadDatesOntoCalendar);
+            rendererThread.Start();
         }
 
         #endregion
@@ -138,10 +157,11 @@ namespace EasyCalendar.Controls.Calendar
 
         private void CalendarControl_Load(object sender, EventArgs e)
         {
-            this.BackColor = CALENDAR_CONTROL_COLOR;
-
             this.navigator.DatePicker.Observer = this;
+
             this.navigator.DatePicker.Date = DateTime.Now;
+
+            this.BackColor = CALENDAR_CONTROL_COLOR;
         }
 
         #endregion
