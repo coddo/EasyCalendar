@@ -1,10 +1,8 @@
-﻿using EasyCalendar.DAL;
-using EasyCalendar.DAL.Models;
+﻿using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace EasyCalendar.Controls.Calendar

@@ -2,7 +2,6 @@
 using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Calendar
