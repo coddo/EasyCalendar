@@ -51,7 +51,7 @@
             this.DoubleBuffered = true;
             this.Name = "CalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Calendar";
+            this.Text = "Easy Calendar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.CalendarForm_Shown);
             this.ResumeLayout(false);

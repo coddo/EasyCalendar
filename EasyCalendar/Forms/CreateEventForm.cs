@@ -2,12 +2,18 @@
 using EasyCalendar.DAL;
 using EasyCalendar.DAL.Models;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Forms
 {
     public partial class CreateEventForm : Form
     {
+        #region Constants
+
+        public static readonly Color FORM_BACK_COLOR = ColorTranslator.FromHtml("#DAD5CB");
+
+        #endregion
         #region Fields 
 
         protected IObserver observer;
@@ -23,6 +29,8 @@ namespace EasyCalendar.Forms
         public CreateEventForm(DateTime date, IObserver observer)
         {
             InitializeComponent();
+
+            this.BackColor = FORM_BACK_COLOR;
 
             this.datePicker.Value = date;
             this.observer = observer;

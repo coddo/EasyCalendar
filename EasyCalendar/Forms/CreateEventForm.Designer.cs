@@ -213,7 +213,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CreateEventForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CreateEvent";
+            this.Text = "Create event";
             this.repeatPanel.ResumeLayout(false);
             this.repeatPanel.PerformLayout();
             this.ResumeLayout(false);
