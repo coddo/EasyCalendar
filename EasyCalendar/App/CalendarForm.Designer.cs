@@ -54,8 +54,6 @@
             this.Text = "Calendar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.CalendarForm_Shown);
-            this.SizeChanged += new System.EventHandler(this.CalendarForm_SizeChanged);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Calendar_MouseMove);
             this.ResumeLayout(false);
 
         }

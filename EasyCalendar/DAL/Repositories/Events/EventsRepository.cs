@@ -13,9 +13,12 @@ namespace EasyCalendar.DAL.Repositories.Events
         {
         }
 
-        public List<Event> GetPossibleEventsAsList(DateTime maxDate)
+        public List<Event> GetActiveEventsAsList(DateTime minDate, DateTime maxDate)
         {
-            return _dbSet.Where(e => e.Date <= maxDate).ToList();
+            if (minDate >= DateTime.Today)
+                minDate = DateTime.Today;
+
+            return _dbSet.Where(e => e.Date >= minDate && e.Date <= maxDate).ToList();
         }
 
         public Event[] GetEventsForDate(DateTime date)
@@ -25,7 +28,7 @@ namespace EasyCalendar.DAL.Repositories.Events
 
         public Event[] GetMissedEvents()
         {
-            return _dbSet.Where(e => e.Date < DateTime.Today && !e.Seen).ToArray();
+            return _dbSet.Where(e => e.Date < DateTime.Today && !e.IsSeen).ToArray();
         }
 
         public Event[] GetActiveEvents()
@@ -36,6 +39,15 @@ namespace EasyCalendar.DAL.Repositories.Events
         public Event[] GetPassedEvents()
         {
             return _dbSet.Where(e => e.Date < DateTime.Today).ToArray();
+        }
+
+        public void RescheduleRecursiveEvents()
+        {
+            var events = _dbSet.Where(e => e.IsRecursive && e.IsSeen).ToList();
+
+            events.ForEach(e => e.Date = e.Date.AddDays((double)e.RecursionDays).AddMonths((int)e.RecursionMonths).AddYears((int)e.RecursionYears));
+
+            Save();
         }
     }
 }

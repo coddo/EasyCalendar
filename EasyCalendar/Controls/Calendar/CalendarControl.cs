@@ -73,7 +73,7 @@ namespace EasyCalendar.Controls.Calendar
             // Load events for all the slots
             using (var db = new UnitOfWork())
             {
-                var events = db.EventsRepository.GetPossibleEventsAsList(slots[ROWS * COLUMNS - 1].Date);
+                var events = db.EventsRepository.GetActiveEventsAsList(slots[0].Date, slots[ROWS * COLUMNS - 1].Date);
 
                 for (int i = 0; i < ROWS; i++)
                 {

@@ -84,9 +84,6 @@ namespace EasyCalendar.DAL.Repositories
             if (obj == null)
                 return null;
 
-            var dbObject = _dbSet.Find(obj.Id);
-            dbObject = obj;
-
             return Save() ? _dbSet.Find(obj.Id) : null;
         }
 

@@ -47,6 +47,7 @@ namespace EasyCalendar.Forms
                 ev.Details = descriptionBox.Text;
                 ev.Date = datePicker.Value;
                 ev.IsRecursive = repeatCheckBox.Checked;
+                ev.IsSeen = false;
 
                 ev.RecursionDays = int.Parse(repeatDaysBox.Text);
                 ev.RecursionMonths = int.Parse(repeatMonthsBox.Text);

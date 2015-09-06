@@ -15,8 +15,8 @@ namespace EasyCalendar.DAL.Models
         [Column("Date")]
         public DateTime Date { get; set; } = DateTime.Now;
 
-        [Column("Seen")]
-        public bool Seen { get; set; } = false;
+        [Column("IsSeen")]
+        public bool IsSeen { get; set; } = false;
 
         [Column("IsRecursive")]
         public bool IsRecursive { get; set; } = false;
