@@ -40,7 +40,7 @@
             this.deleteEventButton.BackColor = System.Drawing.Color.Red;
             this.deleteEventButton.Font = new System.Drawing.Font("Mixolydian Titling", 12F);
             this.deleteEventButton.ForeColor = System.Drawing.Color.White;
-            this.deleteEventButton.Location = new System.Drawing.Point(15, 279);
+            this.deleteEventButton.Location = new System.Drawing.Point(15, 323);
             this.deleteEventButton.Name = "deleteEventButton";
             this.deleteEventButton.Size = new System.Drawing.Size(150, 35);
             this.deleteEventButton.TabIndex = 10;
@@ -52,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 324);
+            this.ClientSize = new System.Drawing.Size(542, 366);
             this.Controls.Add(this.deleteEventButton);
             this.Name = "EditEventForm";
             this.Text = "EditEventForm";

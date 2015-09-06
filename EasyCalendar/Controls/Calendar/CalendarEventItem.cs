@@ -2,6 +2,7 @@
 using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Calendar
@@ -63,7 +64,7 @@ namespace EasyCalendar.Controls.Calendar
                 if (ev.IsRecursive)
                     message += "\n\nRepeats once every: " + ev.RecursionYears + " years, " + ev.RecursionMonths + " months and " + ev.RecursionDays + " days";
 
-                this.toolTip.Show(message, this);
+                this.toolTip.Show(message.ToUpper(), this);
 
                 // Mark it as seen
                 if (ev.Date <= DateTime.Today && ev.IsSeen == this.IsSeen)
