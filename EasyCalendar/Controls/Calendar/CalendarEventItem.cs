@@ -11,15 +11,17 @@ namespace EasyCalendar.Controls.Calendar
         private const int ALARM_DAYS = 3;
 
         private Event ev;
+        private DateTime slotDate;
         private IObserver observer;
 
         public Event Event => this.ev;
 
-        public CalendarEventItem(Event ev, IObserver observer)
+        public CalendarEventItem(Event ev, DateTime slotDate, IObserver observer)
         {
             InitializeComponent();
 
             this.ev = ev;
+            this.slotDate = slotDate;
             this.observer = observer;
         }
 
@@ -36,7 +38,7 @@ namespace EasyCalendar.Controls.Calendar
                 return status + "TODAY!!!";
 
             else
-                return status + "In less than " + (ev.Date - DateTime.Today).TotalDays + " days";
+                return status + "Will take place in " + (slotDate - DateTime.Today).TotalDays + " days";
         }
 
         private void EventItem_MouseClick(object sender, MouseEventArgs e)

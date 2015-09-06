@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyCalendar.DAL;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
@@ -51,6 +52,7 @@ namespace EasyCalendar.Controls.Calendar
             if (index < 0) // Sunday
                 index = COLUMNS - 1;
 
+            // Fix dates on the slots
             date = date.AddDays(-index);
             for (int i = 0; i < ROWS; i++)
             {
@@ -63,7 +65,25 @@ namespace EasyCalendar.Controls.Calendar
                     slots[i * COLUMNS + j].Invoke((MethodInvoker)(() =>
                     {
                         slots[i * COLUMNS + j].Date = newDate;
+
                     }));
+                }
+            }
+
+            // Load events for all the slots
+            using (var db = new UnitOfWork())
+            {
+                var events = db.EventsRepository.GetPossibleEventsAsList(slots[ROWS * COLUMNS - 1].Date);
+
+                for (int i = 0; i < ROWS; i++)
+                {
+                    for (int j = 0; j < COLUMNS; j++, addition++)
+                    {
+                        slots[i * COLUMNS + j].Invoke((MethodInvoker)(() =>
+                        {
+                            slots[i * COLUMNS + j].LoadEvents(ref events);
+                        }));
+                    }
                 }
             }
         }
