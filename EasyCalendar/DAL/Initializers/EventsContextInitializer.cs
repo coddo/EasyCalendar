@@ -32,7 +32,7 @@ namespace EasyCalendar.DAL.Initializers
                 .Property(p => p.Date).IsRequired();
 
             builder.Entity<Event>()
-                .Property(p => p.Seen).IsRequired();
+                .Property(p => p.IsSeen).IsRequired();
         }
     }
 }

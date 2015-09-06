@@ -78,7 +78,7 @@ namespace EasyCalendar.Forms
                 Title = titleBox.Text,
                 Details = descriptionBox.Text,
                 IsRecursive = repeatCheckBox.Checked,
-                Seen = false,
+                IsSeen = false,
                 Date = datePicker.Value,
             };
 

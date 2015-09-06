@@ -40,9 +40,9 @@
             this.repeatDaysBox = new System.Windows.Forms.TextBox();
             this.dateLabel = new System.Windows.Forms.Label();
             this.titleBox = new System.Windows.Forms.TextBox();
-            this.descriptionBox = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.performActionButton = new System.Windows.Forms.Button();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
             this.repeatPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +60,7 @@
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(12, 70);
+            this.descriptionLabel.Location = new System.Drawing.Point(12, 93);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(92, 18);
             this.descriptionLabel.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             this.repeatCheckBox.AutoSize = true;
             this.repeatCheckBox.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.repeatCheckBox.Location = new System.Drawing.Point(15, 165);
+            this.repeatCheckBox.Location = new System.Drawing.Point(15, 209);
             this.repeatCheckBox.Name = "repeatCheckBox";
             this.repeatCheckBox.Size = new System.Drawing.Size(78, 22);
             this.repeatCheckBox.TabIndex = 2;
@@ -87,7 +87,7 @@
             this.repeatPanel.Controls.Add(this.repeatYearsBox);
             this.repeatPanel.Controls.Add(this.repeatMonthsBox);
             this.repeatPanel.Controls.Add(this.repeatDaysBox);
-            this.repeatPanel.Location = new System.Drawing.Point(15, 193);
+            this.repeatPanel.Location = new System.Drawing.Point(15, 237);
             this.repeatPanel.Name = "repeatPanel";
             this.repeatPanel.Size = new System.Drawing.Size(515, 74);
             this.repeatPanel.TabIndex = 3;
@@ -154,7 +154,7 @@
             // 
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLabel.Location = new System.Drawing.Point(12, 116);
+            this.dateLabel.Location = new System.Drawing.Point(12, 160);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(46, 18);
             this.dateLabel.TabIndex = 4;
@@ -168,18 +168,10 @@
             this.titleBox.Size = new System.Drawing.Size(420, 27);
             this.titleBox.TabIndex = 5;
             // 
-            // descriptionBox
-            // 
-            this.descriptionBox.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionBox.Location = new System.Drawing.Point(110, 67);
-            this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(420, 27);
-            this.descriptionBox.TabIndex = 7;
-            // 
             // datePicker
             // 
             this.datePicker.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(110, 110);
+            this.datePicker.Location = new System.Drawing.Point(110, 154);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(420, 27);
             this.datePicker.TabIndex = 8;
@@ -187,7 +179,7 @@
             // performActionButton
             // 
             this.performActionButton.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.performActionButton.Location = new System.Drawing.Point(380, 279);
+            this.performActionButton.Location = new System.Drawing.Point(380, 323);
             this.performActionButton.Name = "performActionButton";
             this.performActionButton.Size = new System.Drawing.Size(150, 35);
             this.performActionButton.TabIndex = 9;
@@ -195,11 +187,20 @@
             this.performActionButton.UseVisualStyleBackColor = true;
             this.performActionButton.Click += new System.EventHandler(this.performActionButton_Click);
             // 
+            // descriptionBox
+            // 
+            this.descriptionBox.Font = new System.Drawing.Font("Mixolydian Titling", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionBox.Location = new System.Drawing.Point(110, 67);
+            this.descriptionBox.Multiline = true;
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(420, 69);
+            this.descriptionBox.TabIndex = 7;
+            // 
             // CreateEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 324);
+            this.ClientSize = new System.Drawing.Size(542, 366);
             this.Controls.Add(this.performActionButton);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.descriptionBox);
@@ -234,8 +235,8 @@
         protected internal System.Windows.Forms.TextBox repeatDaysBox;
         protected internal System.Windows.Forms.TextBox repeatMonthsBox;
         protected internal System.Windows.Forms.TextBox titleBox;
-        protected internal System.Windows.Forms.TextBox descriptionBox;
         protected internal System.Windows.Forms.DateTimePicker datePicker;
         protected internal System.Windows.Forms.Button performActionButton;
+        protected internal System.Windows.Forms.TextBox descriptionBox;
     }
 }

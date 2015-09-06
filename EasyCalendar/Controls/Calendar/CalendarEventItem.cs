@@ -1,4 +1,5 @@
-﻿using EasyCalendar.DAL.Models;
+﻿using EasyCalendar.DAL;
+using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
 using System.Windows.Forms;
@@ -11,32 +12,41 @@ namespace EasyCalendar.Controls.Calendar
         private const int ALARM_DAYS = 3;
 
         private Event ev;
+        private DateTime slotDate;
         private IObserver observer;
 
         public Event Event => this.ev;
+        public bool IsSeen { get; set; }
 
-        public CalendarEventItem(Event ev, IObserver observer)
+        public CalendarEventItem(Event ev, DateTime slotDate, IObserver observer)
         {
             InitializeComponent();
 
             this.ev = ev;
+            this.slotDate = slotDate;
             this.observer = observer;
+            this.IsSeen = ev.IsSeen;
+        }
+
+        public CalendarEventItem(Event ev, DateTime slotDate, IObserver observer, bool isSeen) : this(ev, slotDate, observer)
+        {
+            this.IsSeen = isSeen;
         }
 
         private string Status()
         {
             string status = "Status: ";
 
-            if (ev.Date < DateTime.Today)
-                if (ev.Seen)
-                    return status + "Passed";
-                else return status + "Missed";
+            if (ev.Date < DateTime.Today && !this.IsSeen)
+                return status + "Missed";
 
-            else if (ev.Date == DateTime.Today)
+            else if (slotDate == DateTime.Today)
                 return status + "TODAY!!!";
 
+            else if (slotDate > DateTime.Today)
+                return status + "Will take place in " + (slotDate - DateTime.Today).TotalDays + " days";
             else
-                return status + "In less than " + (ev.Date - DateTime.Today).TotalDays + " days";
+                return status + "Has taken place " + -(slotDate - DateTime.Today).TotalDays + " days ago";
         }
 
         private void EventItem_MouseClick(object sender, MouseEventArgs e)
@@ -44,7 +54,29 @@ namespace EasyCalendar.Controls.Calendar
             if (e.Button == MouseButtons.Left)
             {
                 this.toolTip.ToolTipTitle = ev.Title.ToUpper();
-                this.toolTip.Show(ev.Details + "\n\n" + ev.Date.ToString(CalendarSlot.DATE_FORMAT_LONG) + "\n\n" + Status(), this);
+
+                string message = "";
+                if (ev.Details != null && ev.Details.Length > 0)
+                    message += ev.Details + "\n\n";
+                message += ev.Date.ToString(CalendarSlot.DATE_FORMAT_LONG) + "\n\n" + Status();
+
+                if (ev.IsRecursive)
+                    message += "\n\nRepeats once every: " + ev.RecursionYears + " years, " + ev.RecursionMonths + " months and " + ev.RecursionDays + " days";
+
+                this.toolTip.Show(message.ToUpper(), this);
+
+                // Mark it as seen
+                if (ev.Date <= DateTime.Today && ev.IsSeen == this.IsSeen)
+                {
+                    using (var db = new UnitOfWork())
+                    {
+                        ev = db.EventsRepository.Get(ev.Id);
+
+                        ev.IsSeen = this.IsSeen = true;
+
+                        db.EventsRepository.Update(ev);
+                    }
+                }
             }
 
             else if (e.Button == MouseButtons.Right)

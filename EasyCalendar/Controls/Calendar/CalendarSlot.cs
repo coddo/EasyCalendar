@@ -1,9 +1,9 @@
-﻿using EasyCalendar.DAL;
-using EasyCalendar.DAL.Models;
+﻿using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace EasyCalendar.Controls.Calendar
 {
@@ -60,7 +60,6 @@ namespace EasyCalendar.Controls.Calendar
                 this.date = value;
 
                 RenderDateLabel();
-                LoadEventsForDate(value);
             }
         }
 
@@ -91,16 +90,34 @@ namespace EasyCalendar.Controls.Calendar
 
         #region Methods
 
-        public void LoadEventsForDate(DateTime date)
+        public void LoadEvents(ref List<Event> events)
         {
             this.flowPanel.Controls.Clear();
 
-            using (var db = new UnitOfWork())
+            for (int i = 0; i < events.Count; i++)
             {
-                var events = db.EventsRepository.GetEventsForDate(date);
+                // Deal with non-repeating events
+                if (!events[i].IsRecursive)
+                {
+                    if (events[i].Date == this.Date)
+                    {
+                        this.flowPanel.Controls.Add(new CalendarEventItem(events[i], this.Date, Observer));
 
-                foreach (Event ev in events)
-                    this.flowPanel.Controls.Add(new CalendarEventItem(ev, Observer));
+                        events.RemoveAt(i--);
+                    }
+
+                    continue;
+                }
+
+                // Deal with repeating events
+                DateTime date = events[i].Date;
+
+                if (this.Date >= DateTime.Today) // Move forward in time for active events
+                    for (; date < this.Date; date = date.AddDays((double)events[i].RecursionDays).AddMonths((int)events[i].RecursionMonths).AddYears((int)events[i].RecursionYears)) ;
+
+                if (date == this.Date)
+                    this.flowPanel.Controls.Add(new CalendarEventItem(events[i], this.Date, Observer));
+
             }
         }
 
