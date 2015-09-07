@@ -18,7 +18,7 @@ namespace EasyCalendar.DAL.Repositories.Events
             if (minDate >= DateTime.Today)
                 minDate = DateTime.Today;
 
-            return _dbSet.Where(e => e.Date >= minDate && e.Date <= maxDate).ToList();
+            return _dbSet.Where(e => (e.Date >= minDate && e.Date <= maxDate) || (e.Date < DateTime.Today && !e.IsSeen && e.IsRecursive)).ToList();
         }
 
         public Event[] GetEventsForDate(DateTime date)
@@ -45,7 +45,28 @@ namespace EasyCalendar.DAL.Repositories.Events
         {
             var events = _dbSet.Where(e => e.IsRecursive && e.IsSeen).ToList();
 
-            events.ForEach(e => e.Date = e.Date.AddDays((double)e.RecursionDays).AddMonths((int)e.RecursionMonths).AddYears((int)e.RecursionYears));
+            events.ForEach(ev =>
+            {
+                // Reschedule events recursively until their new date is after TODAY
+                while (ev.Date < DateTime.Today)
+                {
+                    // Create a standalone event
+                    Insert(new Event
+                    {
+                        Date = ev.Date,
+                        Details = ev.Details,
+                        Title = ev.Title,
+                        IsSeen = true,
+                        IsRecursive = false,
+                        RecursionDays = 0,
+                        RecursionMonths = 0,
+                        RecursionYears = 0
+                    });
+
+                    // Reschedule the event with one step
+                    ev.Date = ev.Date.AddDays((double)ev.RecursionDays).AddMonths((int)ev.RecursionMonths).AddYears((int)ev.RecursionYears);
+                }
+            });
 
             Save();
         }

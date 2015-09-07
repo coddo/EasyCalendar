@@ -29,21 +29,33 @@
         private void InitializeComponent()
         {
             this.navigator = new EasyCalendar.Controls.Navigation.NavigationBar();
+            this.quickActionBar = new EasyCalendar.Controls.Actions.QuickActionBar();
             this.SuspendLayout();
             // 
             // navigator
             // 
-            this.navigator.BackColor = System.Drawing.Color.Transparent;
+            this.navigator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(181)))), ((int)(((byte)(187)))));
+            this.navigator.Date = new System.DateTime(2015, 8, 1, 0, 0, 0, 0);
             this.navigator.Location = new System.Drawing.Point(3, 346);
+            this.navigator.MaximumSize = new System.Drawing.Size(336, 61);
             this.navigator.Name = "navigator";
-            this.navigator.Size = new System.Drawing.Size(439, 76);
+            this.navigator.Size = new System.Drawing.Size(336, 61);
             this.navigator.TabIndex = 0;
+            // 
+            // quickActionBar
+            // 
+            this.quickActionBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(181)))), ((int)(((byte)(187)))));
+            this.quickActionBar.Location = new System.Drawing.Point(3, 266);
+            this.quickActionBar.Name = "quickActionBar";
+            this.quickActionBar.Size = new System.Drawing.Size(207, 61);
+            this.quickActionBar.TabIndex = 1;
             // 
             // CalendarControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.quickActionBar);
             this.Controls.Add(this.navigator);
             this.DoubleBuffered = true;
             this.Name = "CalendarControl";
@@ -57,5 +69,7 @@
         private EasyCalendar.Controls.Navigation.NavigationBar navigator;
 
         #endregion
+
+        private Actions.QuickActionBar quickActionBar;
     }
 }

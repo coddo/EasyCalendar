@@ -12,7 +12,18 @@ namespace EasyCalendar.Controls.Navigation
 
         public DatePicker DatePicker => this.datePicker;
 
-        public DateTime Date => datePicker.Date;
+        public DateTime Date
+        {
+            get
+            {
+                return datePicker.Date;
+            }
+
+            set
+            {
+                datePicker.Date = value;
+            }
+        }
 
         #endregion
 
@@ -25,14 +36,6 @@ namespace EasyCalendar.Controls.Navigation
         {
             this.Parent = parent;
         }
-
-        #region Overrides
-
-        #endregion
-
-        #region Methods
-
-        #endregion
 
         #region Events
 

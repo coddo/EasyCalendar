@@ -13,7 +13,13 @@ namespace EasyCalendar.Controls.Abstract
         public static readonly Color FLOATING_BAR_COLOR = ColorTranslator.FromHtml("#95B5BB");
 
         public const int FLOW_HEIGHT = 30;
-        
+
+        #endregion
+
+        #region Properties
+
+        protected internal virtual int WaitTimeNanoS => 1;
+
         #endregion
 
         public FloatingBar()
@@ -57,7 +63,7 @@ namespace EasyCalendar.Controls.Abstract
                         transitionDistance--;
                         this.Refresh();
 
-                        Thread.Sleep(new TimeSpan(1));
+                        Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
                 }));
             }).Start();
@@ -94,7 +100,7 @@ namespace EasyCalendar.Controls.Abstract
 
                         this.Refresh();
 
-                        Thread.Sleep(new TimeSpan(1));
+                        Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
 
                     this.MouseEnter += this.NavigationBar_MouseEnterAnimate;
