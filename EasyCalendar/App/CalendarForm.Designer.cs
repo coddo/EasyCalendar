@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarForm));
             this.calendarControl = new EasyCalendar.Controls.Calendar.CalendarControl();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             this.ClientSize = new System.Drawing.Size(637, 549);
             this.Controls.Add(this.calendarControl);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Easy Calendar";
