@@ -41,7 +41,7 @@
             // 
             // CalendarEventItem
             // 
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Size = new System.Drawing.Size(25, 25);
             this.Leave += new System.EventHandler(this.CalendarEventItem_Leave);

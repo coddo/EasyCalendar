@@ -2,6 +2,7 @@
 using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Calendar
@@ -26,6 +27,8 @@ namespace EasyCalendar.Controls.Calendar
             this.slotDate = slotDate;
             this.observer = observer;
             this.IsSeen = ev.IsSeen;
+
+            SetAppropriateImage();
         }
 
         public CalendarEventItem(Event ev, DateTime slotDate, IObserver observer, bool isSeen) : this(ev, slotDate, observer)
@@ -47,6 +50,25 @@ namespace EasyCalendar.Controls.Calendar
                 return status + "Will take place in " + (slotDate - DateTime.Today).TotalDays + " days";
             else
                 return status + "Has taken place " + -(slotDate - DateTime.Today).TotalDays + " days ago";
+        }
+
+        private void SetAppropriateImage()
+        {
+            if (ev.Date < DateTime.Today && !this.IsSeen)
+                this.BackgroundImage = global::EasyCalendar.Properties.Resources.missed;
+
+            else if (slotDate == DateTime.Today)
+                this.BackgroundImage = global::EasyCalendar.Properties.Resources.today;
+
+            else if (slotDate > DateTime.Today)
+            {
+                if ((slotDate - DateTime.Today).TotalDays <= NOTIFICATION_DAYS)
+                    this.BackgroundImage = global::EasyCalendar.Properties.Resources.upcoming;
+                else
+                    this.BackgroundImage = global::EasyCalendar.Properties.Resources.normal;
+            }
+            else
+                this.BackgroundImage = global::EasyCalendar.Properties.Resources.passed;
         }
 
         private void EventItem_MouseClick(object sender, MouseEventArgs e)

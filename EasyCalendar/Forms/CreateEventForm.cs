@@ -40,7 +40,7 @@ namespace EasyCalendar.Forms
 
         protected bool VerifyFields()
         {
-            if (datePicker.Value < DateTime.Now)
+            if (datePicker.Value < DateTime.Today)
             {
                 MessageBox.Show("The event date cannot be earlier than today!", "Bad date", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
