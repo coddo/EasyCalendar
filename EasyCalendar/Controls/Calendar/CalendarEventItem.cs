@@ -2,22 +2,34 @@
 using EasyCalendar.DAL.Models;
 using EasyCalendar.Forms;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Calendar
 {
     public partial class CalendarEventItem : Panel
     {
+        #region Constants
+
         private const int NOTIFICATION_DAYS = 7;
         private const int ALARM_DAYS = 3;
+
+        #endregion
+
+        #region Fields
 
         private Event ev;
         private DateTime slotDate;
         private IObserver observer;
 
+        #endregion
+
+        #region Properties
+
         public Event Event => this.ev;
+
         public bool IsSeen { get; set; }
+
+        #endregion
 
         public CalendarEventItem(Event ev, DateTime slotDate, IObserver observer)
         {
@@ -35,6 +47,8 @@ namespace EasyCalendar.Controls.Calendar
         {
             this.IsSeen = isSeen;
         }
+
+        #region Methods
 
         private string Status()
         {
@@ -70,6 +84,10 @@ namespace EasyCalendar.Controls.Calendar
             else
                 this.BackgroundImage = global::EasyCalendar.Properties.Resources.passed;
         }
+
+        #endregion
+
+        #region Event handlers
 
         private void EventItem_MouseClick(object sender, MouseEventArgs e)
         {
@@ -111,5 +129,7 @@ namespace EasyCalendar.Controls.Calendar
         {
             this.toolTip.Hide(this);
         }
+
+        #endregion
     }
 }
