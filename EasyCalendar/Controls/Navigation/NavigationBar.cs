@@ -1,20 +1,11 @@
 ﻿using EasyCalendar.Controls.Abstract;
 using EasyCalendar.Controls.Calendar;
 using System;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Navigation
 {
     public partial class NavigationBar : FloatingBar
     {
-        #region Constants
-
-        public static readonly Color NAVI_COLOR = ColorTranslator.FromHtml("#95B5BB");
-
-        #endregion
-
         #region Properties
 
         private new CalendarControl Parent { get; set; }
@@ -44,11 +35,6 @@ namespace EasyCalendar.Controls.Navigation
         #endregion
 
         #region Events
-
-        private void NavigationBar_Load(object sender, System.EventArgs e)
-        {
-            this.BackColor = NAVI_COLOR;
-        }
 
         private void nextButton_Click(object sender, System.EventArgs e)
         {

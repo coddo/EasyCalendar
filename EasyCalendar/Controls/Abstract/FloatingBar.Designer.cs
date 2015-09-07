@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "FloatingBar";
             this.Size = new System.Drawing.Size(274, 83);
+            this.Load += new System.EventHandler(this.FloatingBar_Load);
             this.MouseEnter += new System.EventHandler(this.NavigationBar_MouseEnterAnimate);
             this.MouseLeave += new System.EventHandler(this.NavigationBar_MouseLeaveAnimate);
             this.ResumeLayout(false);

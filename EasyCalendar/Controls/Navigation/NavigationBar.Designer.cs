@@ -92,7 +92,6 @@
             this.MaximumSize = new System.Drawing.Size(336, 61);
             this.Name = "NavigationBar";
             this.Size = new System.Drawing.Size(336, 61);
-            this.Load += new System.EventHandler(this.NavigationBar_Load);
             this.ResumeLayout(false);
 
         }

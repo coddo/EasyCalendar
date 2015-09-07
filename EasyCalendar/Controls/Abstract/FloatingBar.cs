@@ -2,16 +2,25 @@
 using System.Windows.Forms;
 using System.Threading;
 using System.Linq;
+using System.Drawing;
 
 namespace EasyCalendar.Controls.Abstract
 {
-    public abstract partial class FloatingBar : UserControl
+    public partial class FloatingBar : UserControl
     {
+        #region Constants
+
+        public static readonly Color FLOATING_BAR_COLOR = ColorTranslator.FromHtml("#95B5BB");
+
         public const int FLOW_HEIGHT = 30;
+        
+        #endregion
 
         public FloatingBar()
         {
             InitializeComponent();
+
+            this.BackColor = FLOATING_BAR_COLOR;
         }
 
         private bool IsPointerOverChild()
@@ -91,6 +100,11 @@ namespace EasyCalendar.Controls.Abstract
                     this.MouseEnter += this.NavigationBar_MouseEnterAnimate;
                 }));
             }).Start();
+        }
+
+        private void FloatingBar_Load(object sender, EventArgs e)
+        {
+            this.BackColor = FLOATING_BAR_COLOR;
         }
     }
 }
