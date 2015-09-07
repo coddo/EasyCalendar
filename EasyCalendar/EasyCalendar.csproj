@@ -120,6 +120,12 @@
     <Compile Include="Controls\Calendar\CalendarEventItem.Designer.cs">
       <DependentUpon>CalendarEventItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Info\Legend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Info\Legend.Designer.cs">
+      <DependentUpon>Legend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\IObservable.cs" />
     <Compile Include="Controls\IObserver.cs" />
     <Compile Include="Controls\Navigation\DatePicker.cs">
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Calendar\CalendarEventItem.resx">
       <DependentUpon>CalendarEventItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Info\Legend.resx">
+      <DependentUpon>Legend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Navigation\DatePicker.resx">
       <DependentUpon>DatePicker.cs</DependentUpon>

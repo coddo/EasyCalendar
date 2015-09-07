@@ -30,6 +30,7 @@
         {
             this.navigator = new EasyCalendar.Controls.Navigation.NavigationBar();
             this.quickActionBar = new EasyCalendar.Controls.Actions.QuickActionBar();
+            this.legendBox = new EasyCalendar.Controls.Info.Legend();
             this.SuspendLayout();
             // 
             // navigator
@@ -46,15 +47,27 @@
             // 
             this.quickActionBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(181)))), ((int)(((byte)(187)))));
             this.quickActionBar.Location = new System.Drawing.Point(3, 266);
+            this.quickActionBar.MaximumSize = new System.Drawing.Size(174, 61);
             this.quickActionBar.Name = "quickActionBar";
-            this.quickActionBar.Size = new System.Drawing.Size(207, 61);
+            this.quickActionBar.Parent = null;
+            this.quickActionBar.Size = new System.Drawing.Size(174, 61);
             this.quickActionBar.TabIndex = 1;
+            // 
+            // legendBox
+            // 
+            this.legendBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(181)))), ((int)(((byte)(187)))));
+            this.legendBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.legendBox.Location = new System.Drawing.Point(3, 24);
+            this.legendBox.Name = "legendBox";
+            this.legendBox.Size = new System.Drawing.Size(376, 226);
+            this.legendBox.TabIndex = 2;
             // 
             // CalendarControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.legendBox);
             this.Controls.Add(this.quickActionBar);
             this.Controls.Add(this.navigator);
             this.DoubleBuffered = true;
@@ -71,5 +84,6 @@
         #endregion
 
         private Actions.QuickActionBar quickActionBar;
+        private Info.Legend legendBox;
     }
 }

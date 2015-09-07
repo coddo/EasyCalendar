@@ -12,6 +12,8 @@ namespace EasyCalendar.Controls.Navigation
 
         public DatePicker DatePicker => this.datePicker;
 
+        protected internal override int WaitTimeNanoS => 10000;
+
         public DateTime Date
         {
             get

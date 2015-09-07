@@ -183,6 +183,9 @@ namespace EasyCalendar.Controls.Calendar
 
             quickActionBar.Left = 30;
             quickActionBar.Top = navigator.Top;
+
+            legendBox.Left = this.Width - legendBox.Width - 30;
+            legendBox.Top = navigator.Top;
         }
 
         #endregion

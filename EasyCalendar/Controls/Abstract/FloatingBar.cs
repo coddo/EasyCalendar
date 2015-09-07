@@ -61,7 +61,6 @@ namespace EasyCalendar.Controls.Abstract
                         this.Top--;
 
                         transitionDistance--;
-                        this.Refresh();
 
                         Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
@@ -97,8 +96,6 @@ namespace EasyCalendar.Controls.Abstract
                         this.Top++;
 
                         transitionDistance--;
-
-                        this.Refresh();
 
                         Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
