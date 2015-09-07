@@ -52,18 +52,21 @@ namespace EasyCalendar.Controls.Calendar
 
         private string Status()
         {
+            string willTakePlaceStatus = "Will take place in " + (slotDate - DateTime.Today).TotalDays + " days";
+            string hasTakenPlaceStatus = "Has taken place " + -(slotDate - DateTime.Today).TotalDays + " days ago";
+
             string status = "Status: ";
 
             if (ev.Date < DateTime.Today && !this.IsSeen)
-                return status + "Missed";
+                return status + "Missed\n\n" + hasTakenPlaceStatus;
 
             else if (slotDate == DateTime.Today)
                 return status + "TODAY!!!";
 
             else if (slotDate > DateTime.Today)
-                return status + "Will take place in " + (slotDate - DateTime.Today).TotalDays + " days";
+                return status + willTakePlaceStatus;
             else
-                return status + "Has taken place " + -(slotDate - DateTime.Today).TotalDays + " days ago";
+                return status + hasTakenPlaceStatus;
         }
 
         private void SetAppropriateImage()
@@ -98,7 +101,8 @@ namespace EasyCalendar.Controls.Calendar
                 string message = "";
                 if (ev.Details != null && ev.Details.Length > 0)
                     message += ev.Details + "\n\n";
-                message += ev.Date.ToString(CalendarSlot.DATE_FORMAT_LONG) + "\n\n" + Status();
+
+                message += slotDate.ToString(CalendarSlot.DATE_FORMAT_LONG) + "\n\n" + Status();
 
                 if (ev.IsRecursive)
                     message += "\n\nRepeats once every: " + ev.RecursionYears + " years, " + ev.RecursionMonths + " months and " + ev.RecursionDays + " days";
@@ -112,7 +116,7 @@ namespace EasyCalendar.Controls.Calendar
                     {
                         ev = db.EventsRepository.Get(ev.Id);
 
-                        ev.IsSeen = this.IsSeen = true;
+                        ev.IsSeen = true;
 
                         db.EventsRepository.Update(ev);
                     }
