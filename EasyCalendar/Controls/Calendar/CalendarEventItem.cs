@@ -11,7 +11,6 @@ namespace EasyCalendar.Controls.Calendar
         #region Constants
 
         private const int NOTIFICATION_DAYS = 7;
-        private const int ALARM_DAYS = 3;
 
         #endregion
 

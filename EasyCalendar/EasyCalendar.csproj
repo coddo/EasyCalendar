@@ -161,6 +161,7 @@
       <DependentUpon>EditEventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\MessageCenter.cs" />
+    <Compile Include="Notifications\AlarmCenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
@@ -243,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="calendar.ico" />
+    <None Include="Resources\alarm.wav" />
     <None Include="Resources\next.png" />
     <None Include="Resources\reschedule.png" />
     <None Include="Resources\refresh.png" />

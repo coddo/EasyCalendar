@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using EasyCalendar.DAL;
+using EasyCalendar.Notifications;
 using System.Windows.Forms;
 
 namespace EasyCalendar.App
@@ -8,6 +9,15 @@ namespace EasyCalendar.App
         public CalendarForm()
         {
             InitializeComponent();
+        }
+
+        private void CalendarForm_Load(object sender, System.EventArgs e)
+        {
+            using (var db = new UnitOfWork())
+            {
+                if (db.EventsRepository.HasUpcomingEvents())
+                    AlarmCenter.PlayAlarm();
+            }
         }
 
         private void CalendarForm_Shown(object sender, System.EventArgs e)

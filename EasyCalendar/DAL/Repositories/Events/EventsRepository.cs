@@ -2,12 +2,20 @@
 using EasyCalendar.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace EasyCalendar.DAL.Repositories.Events
 {
     public class EventsRepository : BaseRepository<Event>
     {
+
+        #region Constants
+
+        public const int ALARM_DAYS = 3;
+
+        #endregion
+
         internal EventsRepository(DatabaseContext context)
             : base(context)
         {
@@ -39,6 +47,15 @@ namespace EasyCalendar.DAL.Repositories.Events
         public Event[] GetPassedEvents()
         {
             return _dbSet.Where(e => e.Date < DateTime.Today).ToArray();
+        }
+
+        private bool Ceva(Event e) => e.Date.AddDays(-3) <= DateTime.Today;
+
+        public bool HasUpcomingEvents()
+        {
+            var date = DateTime.Now.AddDays(ALARM_DAYS);
+
+            return _dbSet.Any(e => e.Date >= DateTime.Today && e.Date <= date);
         }
 
         public void RescheduleRecursiveEvents()
