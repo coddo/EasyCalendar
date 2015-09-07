@@ -1,6 +1,7 @@
 ﻿using EasyCalendar.Controls;
 using EasyCalendar.DAL;
 using EasyCalendar.DAL.Models;
+using EasyCalendar.Notifications;
 using System;
 using System.Windows.Forms;
 
@@ -70,13 +71,13 @@ namespace EasyCalendar.Forms
 
             if (ev == null || ev.Id == Guid.Empty.ToString())
             {
-                MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageCenter.Error.EventUpdatingError();
                 return;
             }
 
             observer?.UpdateUI();
 
-            MessageBox.Show("The event was successfully updated!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageCenter.Info.EventUpdated();
         }
 
         #endregion
@@ -85,7 +86,7 @@ namespace EasyCalendar.Forms
 
         private void deleteEventButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure that you want to delete this event?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageCenter.Confirmation.ConfirmDeleteEvent() == DialogResult.No)
                 return;
 
             using (var db = new UnitOfWork())
