@@ -55,7 +55,7 @@
             this.ClientSize = new System.Drawing.Size(542, 366);
             this.Controls.Add(this.deleteEventButton);
             this.Name = "EditEventForm";
-            this.Text = "EditEventForm";
+            this.Text = "Edit event";
             this.Controls.SetChildIndex(this.repeatCheckBox, 0);
             this.Controls.SetChildIndex(this.titleBox, 0);
             this.Controls.SetChildIndex(this.descriptionBox, 0);

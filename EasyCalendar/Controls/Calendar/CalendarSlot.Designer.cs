@@ -86,10 +86,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.addEvent);
             this.Controls.Add(this.dayOfWeekLabel);
             this.Controls.Add(this.dateLabel);
-            this.Controls.Add(this.flowPanel);
             this.Name = "CalendarSlot";
             this.Size = new System.Drawing.Size(200, 172);
             this.SizeChanged += new System.EventHandler(this.CalendarSlot_SizeChanged);

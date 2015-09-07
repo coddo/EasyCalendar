@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NavigationBar));
+            this.components = new System.ComponentModel.Container();
             this.previousButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.datePicker = new EasyCalendar.Controls.Navigation.DatePicker();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // previousButton
             // 
             this.previousButton.BackColor = System.Drawing.Color.Transparent;
-            this.previousButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousButton.BackgroundImage")));
+            this.previousButton.BackgroundImage = global::EasyCalendar.Properties.Resources.previous;
             this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.previousButton.FlatAppearance.BorderSize = 0;
             this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -47,13 +48,14 @@
             this.previousButton.Name = "previousButton";
             this.previousButton.Size = new System.Drawing.Size(50, 50);
             this.previousButton.TabIndex = 2;
+            this.toolTip.SetToolTip(this.previousButton, "Navigate to previous month");
             this.previousButton.UseVisualStyleBackColor = false;
             this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
             // 
             // nextButton
             // 
             this.nextButton.BackColor = System.Drawing.Color.Transparent;
-            this.nextButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextButton.BackgroundImage")));
+            this.nextButton.BackgroundImage = global::EasyCalendar.Properties.Resources.next;
             this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextButton.FlatAppearance.BorderSize = 0;
             this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -63,6 +65,7 @@
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(50, 50);
             this.nextButton.TabIndex = 1;
+            this.toolTip.SetToolTip(this.nextButton, "Navigate to next month");
             this.nextButton.UseVisualStyleBackColor = false;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
@@ -92,9 +95,6 @@
             this.MaximumSize = new System.Drawing.Size(336, 61);
             this.Name = "NavigationBar";
             this.Size = new System.Drawing.Size(336, 61);
-            this.Load += new System.EventHandler(this.NavigationBar_Load);
-            this.MouseEnter += new System.EventHandler(this.NavigationBar_MouseEnterAnimate);
-            this.MouseLeave += new System.EventHandler(this.NavigationBar_MouseLeaveAnimate);
             this.ResumeLayout(false);
 
         }
@@ -103,5 +103,6 @@
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button previousButton;
         private DatePicker datePicker;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

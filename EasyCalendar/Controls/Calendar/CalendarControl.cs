@@ -1,4 +1,5 @@
-﻿using EasyCalendar.DAL;
+﻿using EasyCalendar.Controls.Navigation;
+using EasyCalendar.DAL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,6 +28,23 @@ namespace EasyCalendar.Controls.Calendar
         #region Threads
 
         private Thread rendererThread;
+
+        #endregion
+
+        #region Properties
+
+        public DateTime Date
+        {
+            get
+            {
+                return navigator.Date;
+            }
+
+            set
+            {
+                navigator.Date = value;
+            }
+        }
 
         #endregion
 
@@ -158,29 +176,36 @@ namespace EasyCalendar.Controls.Calendar
             return "";
         }
 
+        private void RepositionFloatingBars()
+        {
+            navigator.Left = this.Width / 2 - navigator.Width / 2;
+            navigator.Top = this.Height - 5;
+
+            quickActionBar.Left = 30;
+            quickActionBar.Top = navigator.Top;
+
+            legendBox.Left = this.Width - legendBox.Width - 30;
+            legendBox.Top = navigator.Top;
+        }
+
         #endregion
 
         #region Events
 
-        private void RepositionNavigationBar()
-        {
-            navigator.Left = this.Width / 2 - navigator.Width / 2;
-            navigator.Top = this.Height - 5;
-        }
-
         private void CalendarControl_SizeChanged(object sender, EventArgs e)
         {
             RenderSlots();
-            RepositionNavigationBar();
+            RepositionFloatingBars();
         }
 
         private void CalendarControl_Load(object sender, EventArgs e)
         {
-            this.navigator.DatePicker.Observer = this;
+            this.BackColor = CALENDAR_CONTROL_COLOR;
 
+            this.navigator.DatePicker.Observer = this;
             this.navigator.DatePicker.Date = DateTime.Now;
 
-            this.BackColor = CALENDAR_CONTROL_COLOR;
+            this.quickActionBar.Parent = this;
         }
 
         #endregion

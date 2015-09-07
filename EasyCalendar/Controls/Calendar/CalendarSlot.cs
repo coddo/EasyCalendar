@@ -112,8 +112,7 @@ namespace EasyCalendar.Controls.Calendar
                 // Deal with repeating events
                 DateTime date = events[i].Date;
 
-                if (this.Date >= DateTime.Today) // Move forward in time for active events
-                    for (; date < this.Date; date = date.AddDays((double)events[i].RecursionDays).AddMonths((int)events[i].RecursionMonths).AddYears((int)events[i].RecursionYears)) ;
+                for (; date < this.Date; date = date.AddDays((double)events[i].RecursionDays).AddMonths((int)events[i].RecursionMonths).AddYears((int)events[i].RecursionYears)) ;
 
                 if (date == this.Date)
                     this.flowPanel.Controls.Add(new CalendarEventItem(events[i], this.Date, Observer));
