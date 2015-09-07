@@ -160,6 +160,7 @@
     <Compile Include="Forms\EditEventForm.Designer.cs">
       <DependentUpon>EditEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notifications\MessageCenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">

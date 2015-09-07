@@ -34,6 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.DoubleBuffered = true;
             this.Name = "FloatingBar";
             this.Size = new System.Drawing.Size(274, 83);
             this.Load += new System.EventHandler(this.FloatingBar_Load);
