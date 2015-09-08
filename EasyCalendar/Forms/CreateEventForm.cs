@@ -1,6 +1,7 @@
 ﻿using EasyCalendar.Controls;
 using EasyCalendar.DAL;
 using EasyCalendar.DAL.Models;
+using EasyCalendar.Notifications;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -42,13 +43,13 @@ namespace EasyCalendar.Forms
         {
             if (datePicker.Value < DateTime.Today)
             {
-                MessageBox.Show("The event date cannot be earlier than today!", "Bad date", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageCenter.Stop.EventDateBeforeToday();
                 return false;
             }
 
             if (titleBox.Text == string.Empty)
             {
-                MessageBox.Show("The event must have a title set!", "No title", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageCenter.Stop.NoTitleSet();
                 return false;
             }
 
@@ -56,7 +57,7 @@ namespace EasyCalendar.Forms
             {
                 if (repeatDaysBox.Text == string.Empty || repeatYearsBox.Text == string.Empty || repeatMonthsBox.Text == string.Empty)
                 {
-                    MessageBox.Show("The fields for repeating the event cannot be empty!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageCenter.Stop.EmptyRepeatFields();
                     return false;
                 }
             }
@@ -67,12 +68,12 @@ namespace EasyCalendar.Forms
 
             if (!int.TryParse(repeatDaysBox.Text, out recursionDays) || !int.TryParse(repeatMonthsBox.Text, out recursionMonths) || !int.TryParse(repeatYearsBox.Text, out recursionYears))
             {
-                MessageBox.Show("The fields for repeating the event do not contain valid values!", "Invalid values", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageCenter.Stop.InvalidRepeatDataValues();
                 return false;
             }
             else if (recursionDays < 0 || recursionMonths < 0 || recursionYears < 0)
             {
-                MessageBox.Show("The fields for repeating the event cannot contain negative values", "Invalid values", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageCenter.Stop.NegativeRepeatDataValues();
                 return false;
             }
 
@@ -133,7 +134,7 @@ namespace EasyCalendar.Forms
 
             if (ev == null || ev.Id == Guid.Empty.ToString())
             {
-                MessageBox.Show("There was an error creating the event!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageCenter.Error.EventCreationError();
                 return;
             }
 

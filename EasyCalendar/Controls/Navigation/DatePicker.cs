@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyCalendar.Notifications;
+using System;
 using System.Windows.Forms;
 
 namespace EasyCalendar.Controls.Navigation
@@ -109,7 +110,7 @@ namespace EasyCalendar.Controls.Navigation
             }
             if (month == -1)
             {
-                MessageBox.Show("The name of the month is invalid!", "Spelling error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageCenter.Stop.InvalidMonthName();
                 return false;
             }
 
@@ -153,13 +154,9 @@ namespace EasyCalendar.Controls.Navigation
             var date = new DateTime(year, month, day);
 
             if (!DateTime.TryParse(date.ToString(), out date))
-            {
-                MessageBox.Show("The selected date is not valid!", "Wrong date", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
+                MessageCenter.Stop.InvalidDateSelection();
             else
-            {
                 this.Date = date;
-            }
 
             // Update the observer
             Observer?.UpdateUI();
