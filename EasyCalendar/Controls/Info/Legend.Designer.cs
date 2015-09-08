@@ -102,9 +102,9 @@
             this.passedLabel.ForeColor = System.Drawing.Color.Black;
             this.passedLabel.Location = new System.Drawing.Point(39, 13);
             this.passedLabel.Name = "passedLabel";
-            this.passedLabel.Size = new System.Drawing.Size(184, 19);
+            this.passedLabel.Size = new System.Drawing.Size(114, 19);
             this.passedLabel.TabIndex = 5;
-            this.passedLabel.Text = "Events that have passed";
+            this.passedLabel.Text = "Passed events";
             // 
             // missedLabel
             // 
@@ -113,9 +113,9 @@
             this.missedLabel.ForeColor = System.Drawing.Color.Black;
             this.missedLabel.Location = new System.Drawing.Point(39, 57);
             this.missedLabel.Name = "missedLabel";
-            this.missedLabel.Size = new System.Drawing.Size(332, 19);
+            this.missedLabel.Size = new System.Drawing.Size(111, 19);
             this.missedLabel.TabIndex = 6;
-            this.missedLabel.Text = "Passed events that you didn\'t manage to see";
+            this.missedLabel.Text = "Missed events";
             // 
             // todayLabel
             // 
@@ -124,9 +124,9 @@
             this.todayLabel.ForeColor = System.Drawing.Color.Black;
             this.todayLabel.Location = new System.Drawing.Point(39, 102);
             this.todayLabel.Name = "todayLabel";
-            this.todayLabel.Size = new System.Drawing.Size(212, 19);
+            this.todayLabel.Size = new System.Drawing.Size(183, 19);
             this.todayLabel.TabIndex = 7;
-            this.todayLabel.Text = "Events that take place today";
+            this.todayLabel.Text = "Events happening today";
             // 
             // upcomingLabel
             // 
@@ -135,9 +135,9 @@
             this.upcomingLabel.ForeColor = System.Drawing.Color.Black;
             this.upcomingLabel.Location = new System.Drawing.Point(39, 146);
             this.upcomingLabel.Name = "upcomingLabel";
-            this.upcomingLabel.Size = new System.Drawing.Size(336, 19);
+            this.upcomingLabel.Size = new System.Drawing.Size(178, 19);
             this.upcomingLabel.TabIndex = 8;
-            this.upcomingLabel.Text = "Events that will take place in less than a week";
+            this.upcomingLabel.Text = "Events happening soon";
             // 
             // normalLabel
             // 
@@ -165,8 +165,9 @@
             this.Controls.Add(this.todayPictureBox);
             this.Controls.Add(this.missedPictureBox);
             this.Controls.Add(this.passedPictureBox);
+            this.MaximumSize = new System.Drawing.Size(227, 226);
             this.Name = "Legend";
-            this.Size = new System.Drawing.Size(376, 226);
+            this.Size = new System.Drawing.Size(227, 226);
             ((System.ComponentModel.ISupportInitialize)(this.passedPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.missedPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.todayPictureBox)).EndInit();

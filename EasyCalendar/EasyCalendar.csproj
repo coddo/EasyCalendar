@@ -243,6 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="calendar.ico" />
+    <None Include="Resources\empty.ico" />
     <None Include="Resources\alarm.wav" />
     <None Include="Resources\next.png" />
     <None Include="Resources\reschedule.png" />

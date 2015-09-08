@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarForm));
+            resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarForm));
             this.calendarControl = new EasyCalendar.Controls.Calendar.CalendarControl();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -101,8 +101,8 @@
             this.Name = "CalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Easy Calendar";
-            this.ShowInTaskbar = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.ShowInTaskbar = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.CalendarForm_Load);
             this.Shown += new System.EventHandler(this.CalendarForm_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalendarForm_FormClosing);
@@ -113,6 +113,8 @@
         }
 
         #endregion
+
+        private System.ComponentModel.ComponentResourceManager resources;
 
         private EasyCalendar.Controls.Calendar.CalendarControl calendarControl;
         private System.Windows.Forms.NotifyIcon notifyIcon;

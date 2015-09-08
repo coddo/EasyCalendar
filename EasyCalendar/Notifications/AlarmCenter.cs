@@ -5,21 +5,20 @@ namespace EasyCalendar.Notifications
 {
     public static class AlarmCenter
     {
-        private static SoundPlayer player;
+        private static bool continueRinging = false;
+        private static readonly SoundPlayer player = new SoundPlayer(global::EasyCalendar.Properties.Resources.alarm);
 
         public static void PlayAlarm(int numberOfReplays = 5)
         {
-            player = player ?? new SoundPlayer
-            {
-                Stream = global::EasyCalendar.Properties.Resources.alarm
-            };
+            continueRinging = true;
 
             // Run the sound player in the background
             new Thread(() =>
             {
-                for (int i = 0; i < numberOfReplays; i++)
+                for (int i = 0; i < numberOfReplays && continueRinging; i++)
                 {
-                    player.PlaySync();
+                    player.Play();
+                    Thread.Sleep(1700);
                 }
 
             }).Start();
@@ -27,7 +26,8 @@ namespace EasyCalendar.Notifications
 
         public static void InterrupAlarm()
         {
-            player.Stop();
+            continueRinging = false;
+            player?.Stop();
         }
     }
 }

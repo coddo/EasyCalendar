@@ -9,14 +9,23 @@ namespace EasyCalendar.App
     public partial class CalendarForm : Form
     {
         private DateTime previousDate;
-        private Timer timer;
+        private System.Windows.Forms.Timer checkDateTimer;
         private bool exitPressed = false;
+
+        private bool blinkIconSwapVar = false;
+        private System.Windows.Forms.Timer blinkTimer;
 
         public CalendarForm()
         {
             InitializeComponent();
 
             previousDate = DateTime.Today;
+
+            checkDateTimer = new System.Windows.Forms.Timer { Interval = 1000 * 60 * 60 };
+            checkDateTimer.Tick += checkDateTimer_Tick;
+
+            blinkTimer = new System.Windows.Forms.Timer { Interval = 500 };
+            blinkTimer.Tick += blinkTimer_Tick;
 
             this.contextMenuStrip.BackColor = CalendarSlot.SLOT_COLOR;
             for (int i = 0; i < this.contextMenuStrip.Items.Count; i++)
@@ -29,14 +38,55 @@ namespace EasyCalendar.App
 
         private void RunAlarmIfNecessary()
         {
+            var hasUrgentEvents = false;
+
             using (var db = new UnitOfWork())
             {
-                if (db.EventsRepository.HasUpcomingEvents())
-                    AlarmCenter.PlayAlarm();
+                hasUrgentEvents = db.EventsRepository.HasUpcomingEvents();
+            }
+
+            if (hasUrgentEvents)
+            {
+                StartBlinker();
+                AlarmCenter.PlayAlarm();
             }
         }
 
-        private void Timer_Tick(object sender, System.EventArgs e)
+        private void StartBlinker()
+        {
+            blinkIconSwapVar = false;
+
+            blinkTimer.Enabled = true;
+        }
+
+        private void StopBlinker()
+        {
+            this.blinkTimer.Enabled = false;
+
+            this.notifyIcon.Icon.Dispose();
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+        }
+
+        private void DisplayForm()
+        {
+            StopBlinker();
+            AlarmCenter.InterrupAlarm();
+
+            this.ShowInTaskbar = true;
+            this.Show();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void blinkTimer_Tick(object sender, EventArgs e)
+        {
+            this.notifyIcon.Icon.Dispose();
+
+            this.notifyIcon.Icon = blinkIconSwapVar ? ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))) : global::EasyCalendar.Properties.Resources.empty;
+
+            blinkIconSwapVar = !blinkIconSwapVar;
+        }
+
+        private void checkDateTimer_Tick(object sender, System.EventArgs e)
         {
             // Run the alarm again and refresh the view only if we have passed to a new day
             if (previousDate != DateTime.Today)
@@ -51,16 +101,12 @@ namespace EasyCalendar.App
 
         private void CalendarForm_Load(object sender, System.EventArgs e)
         {
+            this.Visible = false;
+
             // Start an alarm if necessary
             RunAlarmIfNecessary();
 
-            timer = new Timer
-            {
-                Interval = 1000 * 60 * 60,
-            };
-
-            timer.Tick += Timer_Tick;
-            timer.Start();
+            checkDateTimer.Enabled = true;
         }
 
         private void CalendarForm_Shown(object sender, System.EventArgs e)
@@ -79,13 +125,13 @@ namespace EasyCalendar.App
 
         private void CalendarForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (timer.Enabled)
-                timer.Enabled = false;
+            if (checkDateTimer.Enabled)
+                checkDateTimer.Enabled = false;
         }
 
         private void displayCalendarMenuItem_Click(object sender, EventArgs e)
         {
-            this.Show();
+            DisplayForm();
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -97,7 +143,9 @@ namespace EasyCalendar.App
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                this.Show();
+                if (!this.Visible)
+                    DisplayForm();
+                else this.Hide();
         }
     }
 }
