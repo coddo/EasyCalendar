@@ -8,12 +8,17 @@ namespace EasyCalendar.App
 {
     public partial class CalendarForm : Form
     {
+
+        #region Fields
+
         private DateTime previousDate;
         private System.Windows.Forms.Timer checkDateTimer;
         private bool exitPressed = false;
 
         private bool blinkIconSwapVar = false;
         private System.Windows.Forms.Timer blinkTimer;
+
+        #endregion
 
         public CalendarForm()
         {
@@ -35,6 +40,8 @@ namespace EasyCalendar.App
                 this.contextMenuStrip.Items[i].Font = new System.Drawing.Font("Mixolydian Titling", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             }
         }
+
+        #region Methods
 
         private void RunAlarmIfNecessary()
         {
@@ -76,6 +83,10 @@ namespace EasyCalendar.App
             this.Show();
             this.WindowState = FormWindowState.Maximized;
         }
+
+        #endregion
+
+        #region Event handlers
 
         private void blinkTimer_Tick(object sender, EventArgs e)
         {
@@ -147,5 +158,7 @@ namespace EasyCalendar.App
                     DisplayForm();
                 else this.Hide();
         }
+
+        #endregion
     }
 }
