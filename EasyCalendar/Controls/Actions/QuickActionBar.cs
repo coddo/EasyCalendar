@@ -9,8 +9,6 @@ namespace EasyCalendar.Controls.Actions
     {
         public new CalendarControl Parent { get; set; }
 
-        protected internal override int WaitTimeNanoS => 10000;
-
         public QuickActionBar()
         {
             InitializeComponent();

@@ -16,12 +16,6 @@ namespace EasyCalendar.Controls.Abstract
 
         #endregion
 
-        #region Properties
-
-        protected internal virtual int WaitTimeNanoS => 1;
-
-        #endregion
-
         public FloatingBar()
         {
             InitializeComponent();
@@ -61,8 +55,6 @@ namespace EasyCalendar.Controls.Abstract
                         this.Top--;
 
                         transitionDistance--;
-
-                        Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
                 }));
             }).Start();
@@ -96,8 +88,6 @@ namespace EasyCalendar.Controls.Abstract
                         this.Top++;
 
                         transitionDistance--;
-
-                        Thread.Sleep(new TimeSpan(WaitTimeNanoS));
                     }
 
                     this.MouseEnter += this.NavigationBar_MouseEnterAnimate;

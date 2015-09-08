@@ -14,7 +14,5 @@ namespace EasyCalendar.Controls.Info
             upcomingLabel.ForeColor = CalendarSlot.DATE_TEXT_COLOR;
             normalLabel.ForeColor = CalendarSlot.DATE_TEXT_COLOR;*/
         }
-
-        protected internal override int WaitTimeNanoS => 10000;
     }
 }
