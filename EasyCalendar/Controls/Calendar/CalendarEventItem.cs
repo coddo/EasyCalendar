@@ -57,7 +57,7 @@ namespace EasyCalendar.Controls.Calendar
 
             string status = "Status: ";
 
-            if (ev.Date < DateTime.Today && !this.IsSeen)
+            if (slotDate < DateTime.Today && !this.IsSeen)
                 return status + "Missed\n\n" + hasTakenPlaceStatus;
 
             else if (slotDate == DateTime.Today)
@@ -71,7 +71,7 @@ namespace EasyCalendar.Controls.Calendar
 
         private void SetAppropriateImage()
         {
-            if (ev.Date < DateTime.Today && !this.IsSeen)
+            if (slotDate < DateTime.Today && !this.IsSeen)
                 this.BackgroundImage = global::EasyCalendar.Properties.Resources.missed;
 
             else if (slotDate == DateTime.Today)
@@ -110,13 +110,14 @@ namespace EasyCalendar.Controls.Calendar
                 this.toolTip.Show(message.ToUpper(), this);
 
                 // Mark it as seen
-                if (ev.Date <= DateTime.Today && ev.IsSeen == this.IsSeen)
+                using (var db = new UnitOfWork())
                 {
-                    using (var db = new UnitOfWork())
-                    {
-                        ev = db.EventsRepository.Get(ev.Id);
+                    ev = db.EventsRepository.Get(ev.Id);
 
-                        ev.IsSeen = true;
+                    if (slotDate <= DateTime.Today && ev.IsSeen == this.IsSeen)
+                    {
+                        ev.IsSeen = this.IsSeen = true;
+                        SetAppropriateImage();
 
                         db.EventsRepository.Update(ev);
                     }
