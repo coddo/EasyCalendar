@@ -90,6 +90,12 @@
     <Compile Include="App\CalendarForm.Designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Abstract\FloatingBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Abstract\FloatingBar.Designer.cs">
+      <DependentUpon>FloatingBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Calendar\CalendarSlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Abstract\FloatingBar.resx">
+      <DependentUpon>FloatingBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Calendar\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
