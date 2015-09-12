@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EasyCalendar.DAL;
+using System;
 using System.Windows.Forms;
 
 namespace EasyCalendar
@@ -14,9 +12,16 @@ namespace EasyCalendar
         [STAThread]
         static void Main()
         {
+            // Clean up and reschedule necessary events at program startup
+            using (var db = new UnitOfWork())
+            {
+                db.EventsRepository.RescheduleRecursiveEvents();
+            }
+
+            // Start the app
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new App.CalendarForm());
         }
     }
 }
